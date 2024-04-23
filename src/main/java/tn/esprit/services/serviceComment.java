@@ -2,6 +2,7 @@ package tn.esprit.services;
 
 
 import tn.esprit.entities.Comment;
+import tn.esprit.entities.Post;
 import tn.esprit.util.MyDataBase;
 
 import java.sql.*;
@@ -18,11 +19,12 @@ public class serviceComment implements IService<Comment> {
     @Override
     public int ajouter(Comment comment) throws SQLException {
 
-        String sql = "INSERT INTO comment (date,author,contentC) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO comment (Replies_Count,author_c,Content,post_id,signaler) VALUES (?, ?, ?,?,0)";
         PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        statement.setString(1, comment.getReplies_count());
+        statement.setInt(1, comment.getReplies_count());
         statement.setString(2, comment.getAuthorC());
         statement.setString(3, comment.getContent());
+        statement.setInt(4, comment.getPost_id().getId_Post());
         statement.executeUpdate();
 
         // Retrieve the auto-generated ID
@@ -37,9 +39,9 @@ public class serviceComment implements IService<Comment> {
     @Override
     public void modifier(Comment comment) throws SQLException {
 
-        String sql = "update comment set date = ?, contentC = ?, authorC= ? where idC = ?";
+        String sql = "update comment set Replies_count = ?, content = ?, author_c= ? where id_Comment = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, comment.getReplies_count());
+        preparedStatement.setInt(1, comment.getReplies_count());
         preparedStatement.setString(2, comment.getContent());
         preparedStatement.setString(3, comment.getAuthorC());
         preparedStatement.setInt(4,comment.getId_Comment());
@@ -48,11 +50,11 @@ public class serviceComment implements IService<Comment> {
     }
 
     @Override
-    public void supprimer(int idC) throws SQLException {
+    public void supprimer(int id_Comment) throws SQLException {
 
-        String sql = "delete from comment where idC = ?";
+        String sql = "delete from comment where id_Comment = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, idC);
+        preparedStatement.setInt(1, id_Comment);
         preparedStatement.executeUpdate();
 
     }
@@ -65,12 +67,50 @@ public class serviceComment implements IService<Comment> {
         ResultSet rs = statement.executeQuery(sql);
         while (rs.next()){
             Comment c = new Comment();
-            c.setId_Comment(rs.getInt("idC"));
-            c.setReplies_count(rs.getString("date"));
-            c.setContent(rs.getString("contentC"));
-            c.setAuthorC(rs.getString("authorC"));
+            c.setId_Comment(rs.getInt("Id_Comment"));
+            c.setReplies_count(rs.getInt("Replies_Count"));
+            c.setContent(rs.getString("Content"));
+            c.setAuthorC(rs.getString("author_c"));
             comments.add(c);
         }
         return comments;
     }
-}
+    @Override
+    public Post recupererPost(int id) throws SQLException {
+        Post p = new Post();
+        String sql = "SELECT * FROM post WHERE id_post = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+
+                    p.setId_Post(rs.getInt("id_Post"));
+                    p.setTitle(rs.getString("Title"));
+                    p.setCreated_at(rs.getString("created_at"));
+                    p.setAuthor(rs.getString("author"));
+                    p.setViews_count(rs.getInt("views_count"));
+                }
+            }
+        }
+        return p;
+    }
+    @Override
+    public List<Comment> recupererComPost(int id_post) throws SQLException{
+        List<Comment> comments = new ArrayList<>();
+        String sql = "SELECT * FROM comment WHERE post_id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id_post);
+            ResultSet rs = preparedStatement.executeQuery(); // Remove sql from executeQuery() call
+            while (rs.next()){
+                Comment c = new Comment();
+                c.setId_Comment(rs.getInt("Id_Comment"));
+                c.setReplies_count(rs.getInt("Replies_Count"));
+                c.setContent(rs.getString("Content"));
+                c.setAuthorC(rs.getString("author_c"));
+                comments.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return comments;
+}}

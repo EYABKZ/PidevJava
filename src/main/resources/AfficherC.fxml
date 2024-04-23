@@ -9,14 +9,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="modifierButton" prefHeight="791.0" prefWidth="1214.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherPostControllers">
+<AnchorPane fx:id="modifierButton" prefHeight="791.0" prefWidth="1214.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherCommentControllers">
    <children>
       <Label layoutX="246.0" layoutY="81.0" text="Afficher Comment">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="ModifierButton" layoutX="804.0" layoutY="370.0" mnemonicParsing="false" onAction="#goToModification" text="Modify Post" />
+      <Button fx:id="ModifierButton" layoutX="804.0" layoutY="370.0" mnemonicParsing="false" onAction="#goToModification" text="Modify Comment" />
+
       <TextField fx:id="txtId_Comment" editable="false" layoutX="365.0" layoutY="229.0" promptText="txtId_Comment" />
       <Label layoutX="250.0" layoutY="226.0" text="id_Comment">
          <font>

@@ -1,15 +1,19 @@
 package tn.esprit.controllers;
 
+import com.sun.javafx.charts.Legend;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import tn.esprit.entities.Comment;
 
 import java.io.IOException;
 
 public class AfficherCommentControllers {
 
+    public ListView<Comment> AfficherList;
     @FXML
     private TextField txtId_Comment;
 
@@ -40,10 +44,12 @@ public class AfficherCommentControllers {
         try {
             Parent root = loader.load();
             ModifierCommentController modifierController = loader.getController();
+
             modifierController.setTxtContent(txtContent.getText());
             modifierController.setTxtReplies_count(txtReplies_count.getText());
             modifierController.setTxtAuthorC(txtAuthorC.getText());
             modifierController.setTxtIdC(txtId_Comment.getText());
+
 
             // Debug statement to check if root is loaded successfully
             System.out.println("FXML loaded successfully.");

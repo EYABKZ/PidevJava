@@ -72,6 +72,7 @@ public class ModifierPostController {
 
             // Call the modifier method with the modified POST object
             sv.modifier(existingPost);
+            System.out.println("done");
 
             // Show success message
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -85,10 +86,10 @@ public class ModifierPostController {
                 Parent root = loader.load();
 
             AfficherPostControllers afficherPostControllers = loader.getController();
-            List<Post> allTransports = sv.recuperer();
+            List<Post> allPosts = sv.recuperer();
 
             // Add all transports to the ListView
-            ObservableList<Post> items = FXCollections.observableArrayList(allTransports);
+            ObservableList<Post> items = FXCollections.observableArrayList(allPosts);
             afficherPostControllers.AfficherList.setItems(items);
 
             // Use a CellFactory to display the Transport_Model as the text of the list items

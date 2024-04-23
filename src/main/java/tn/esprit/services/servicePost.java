@@ -1,6 +1,7 @@
 package tn.esprit.services;
 
 
+import tn.esprit.entities.Comment;
 import tn.esprit.entities.Post;
 import tn.esprit.util.MyDataBase;
 
@@ -46,6 +47,7 @@ public class servicePost implements IService<Post> {
         preparedStatement.setInt(4,post.getId_Post());
         preparedStatement.setInt(5, post.getViews_count());
         preparedStatement.executeUpdate();
+        System.out.println("done" + post.getAuthor().toString());
 
     }
 
@@ -76,5 +78,28 @@ public class servicePost implements IService<Post> {
             posts.add(p);
         }
         return posts;
+    }
+    @Override
+    public Post recupererPost(int id) throws SQLException {
+        Post p = null;
+        String sql = "SELECT * FROM post WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+
+                    p.setId_Post(rs.getInt("id_Post"));
+                    p.setTitle(rs.getString("Title"));
+                    p.setCreated_at(rs.getString("created_at"));
+                    p.setAuthor(rs.getString("author"));
+                    p.setViews_count(rs.getInt("views_count"));
+                }
+            }
+        }
+        return p;
+    }
+    @Override
+    public List<Post> recupererComPost(int id_post) throws SQLException{
+       return null ;
     }
 }

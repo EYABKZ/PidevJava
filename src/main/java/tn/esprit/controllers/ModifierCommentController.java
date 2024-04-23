@@ -3,9 +3,11 @@ package tn.esprit.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import tn.esprit.entities.Comment;
 import tn.esprit.services.serviceComment;
 import java.io.IOException;
@@ -30,6 +32,7 @@ public class ModifierCommentController {
     @FXML
     private TextField txtId_comment;
 
+
     public void setTxtReplies_count(String txtRepliesCount) { this.txtReplies_count.setText(txtRepliesCount);
     }
 
@@ -46,13 +49,12 @@ public class ModifierCommentController {
     }
 
 
-
     @FXML
     void ModifierAction() {
         try {
             Comment existingComment = new Comment();
 
-            existingComment.setReplies_count(txtReplies_count.getText());
+            existingComment.setReplies_count(Integer.parseInt(txtReplies_count.getText()));
             existingComment.setContent(txtContent.getText());
             existingComment.setAuthorC(txtAuthorC.getText());
             existingComment.setId_Comment(Integer.parseInt(txtId_comment.getText()));
@@ -97,7 +99,7 @@ public class ModifierCommentController {
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationAlert.setTitle("Confirmation");
         confirmationAlert.setHeaderText(null);
-        confirmationAlert.setContentText("Are you sure you want to delete this Post?");
+        confirmationAlert.setContentText("Are you sure you want to delete this comment ?");
         Optional<ButtonType> result = confirmationAlert.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
