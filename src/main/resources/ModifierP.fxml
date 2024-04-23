@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="576.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierPostController">
+   <children>
+      <Label layoutX="178.0" layoutY="179.0" text="Title" />
+      <Label layoutX="171.0" layoutY="235.0" text="Author" />
+      <Label layoutX="168.0" layoutY="296.0" text="Created_at" />
+      <TextField fx:id="txtTitle" layoutX="244.0" layoutY="175.0" />
+      <TextField fx:id="txtAuthor" layoutX="244.0" layoutY="231.0" />
+      <TextField fx:id="txtCreated_at" layoutX="246.0" layoutY="292.0" />
+      <Label layoutX="242.0" layoutY="49.0" text="Modifier Post">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="modify_btn" layoutX="225.0" layoutY="402.0" mnemonicParsing="false" onAction="#ModifierAction" text="modifier" />
+      <Label layoutX="171.0" layoutY="116.0" text="id" />
+      <TextField fx:id="txtId_Post" editable="false" layoutX="243.0" layoutY="111.0" />
+      <Button fx:id="supprimer_btn" layoutX="356.0" layoutY="402.0" mnemonicParsing="false" onAction="#SupprimerAction" text="Supprimer" />
+      <TextField fx:id="txtViews_Count" layoutX="246.0" layoutY="348.0" />
+      <Label layoutX="165.0" layoutY="365.0" text="views_count" />
+   </children>
+</AnchorPane>
