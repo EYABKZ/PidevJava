@@ -40,7 +40,7 @@ public class AjouterPostControllers {
             if (!viewsCountText.isEmpty()) {
                 int viewsCount = Integer.parseInt(viewsCountText);
                 Post p = new Post(txtTitle.getText(), txtCreated_at.getText(), txtAuthor.getText(), viewsCount);
-
+ 
                 int generatedId_Post = sv.ajouter(p);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succes");
