@@ -138,8 +138,13 @@ public class AjouterTransportController {
 
 
     public void setTransport_Picture(String imagePath) {
-        Image image = new Image(imagePath);
-        this.Transport_Picture.setImage(image);
+        if (imagePath != null && !imagePath.isEmpty()) {
+            Image image = new Image(imagePath);
+            this.Transport_Picture.setImage(image);
+        } else {
+            // Handle the case where the imagePath is empty or null
+            System.out.println("Image path is empty or null");
+        }
     }
 
     public void setTxtTransport_Model(String txtTransport_Model) { this.txtTransport_Model.setText(txtTransport_Model);}
