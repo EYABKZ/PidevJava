@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="576.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherPControllers">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="559.0" layoutX="10.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="559.0" layoutX="381.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="431.0" />
+      <Label layoutX="411.0" layoutY="130.0" text="Name" textFill="#00000080">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font></Label>
+      <TextField fx:id="txtLastname" editable="false" layoutX="454.0" layoutY="171.0" prefHeight="30.0" prefWidth="284.0" stylesheets="@css/design.css" />
+      <TextField fx:id="txtEmail" editable="false" layoutX="456.0" layoutY="265.0" prefHeight="30.0" prefWidth="284.0" stylesheets="@css/design.css" />
+      <TextField fx:id="txtPassword" editable="false" layoutX="456.0" layoutY="371.0" prefHeight="30.0" prefWidth="284.0" stylesheets="@css/design.css" />
+      <Label layoutX="413.0" layoutY="226.0" text="Email" textFill="#00000080">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font></Label>
+      <Label layoutX="410.0" layoutY="331.0" text="Password" textFill="#00000080">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font></Label>
+      <Label layoutX="419.0" layoutY="37.0" text="Welcome To Your Profile!">
+         <font>
+            <Font name="Cambria Bold" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="Modifier_btn" layoutX="571.0" layoutY="459.0" mnemonicParsing="false" onAction="#goToModification" prefHeight="38.0" prefWidth="167.0" text="Modify Info" />
+      <Label layoutX="153.0" layoutY="394.0" opacity="0.0" text="id" />
+      <TextField fx:id="txtId" editable="false" layoutX="607.0" layoutY="25.0" opacity="0.0" />
+   </children>
+</AnchorPane>

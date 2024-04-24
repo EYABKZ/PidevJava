@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="576.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierPersonneController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="343.0" layoutX="38.0" layoutY="143.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
+      <Label layoutX="144.0" layoutY="235.0" text="Name">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <TextField fx:id="txtLastname" layoutX="271.0" layoutY="234.0" prefHeight="31.0" prefWidth="403.0" />
+      <TextField fx:id="txtEmail" layoutX="272.0" layoutY="288.0" prefHeight="31.0" prefWidth="403.0" />
+      <TextField fx:id="txtPassword" layoutX="272.0" layoutY="335.0" prefHeight="31.0" prefWidth="403.0" />
+      <Label layoutX="144.0" layoutY="289.0" text="Email">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Label layoutX="144.0" layoutY="336.0" text="Password">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Label layoutX="227.0" layoutY="109.0" text="Here You Can Modify Your Profile Details." textFill="#00000080">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="modify_btn" layoutX="551.0" layoutY="397.0" mnemonicParsing="false" onAction="#ModifierAction" prefHeight="31.0" prefWidth="123.0" text="Save" />
+      <TextField fx:id="txtId" editable="false" layoutX="729.0" layoutY="523.0" prefHeight="31.0" prefWidth="63.0" />
+      <Button fx:id="supprimer_btn" layoutX="31.0" layoutY="517.0" mnemonicParsing="false" onAction="#SupprimerAction" text="Delete User" />
+      <Label layoutX="245.0" layoutY="44.0" text="Profile Modification">
+         <font>
+            <Font name="Bodoni MT" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

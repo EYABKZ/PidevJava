@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.BackController">
+   <children>
+      <ImageView fx:id="ImageP" fitHeight="824.0" fitWidth="1339.0" layoutX="-12.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Img/bg.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="Voyage" layoutX="52.0" layoutY="334.0" mnemonicParsing="false" opacity="0.83" prefHeight="46.0" prefWidth="311.0" styleClass="Style.css" text="Gestion Des Voyage">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="ReserverVoyage" layoutX="22.0" layoutY="413.0" mnemonicParsing="false" opacity="0.83" prefHeight="46.0" prefWidth="370.0" text="Gestion Des Reservation Voyage">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="171.0" fitWidth="171.0" layoutX="1201.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Images/Captures%20d’écran/Capture%20d'écran%202024-04-13%20124856.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="Post" layoutX="559.0" layoutY="324.0" mnemonicParsing="false" opacity="0.83" prefHeight="46.0" prefWidth="202.0" styleClass="Style.css" text="Gestion Des Post">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="Reclamation" layoutX="463.0" layoutY="413.0" mnemonicParsing="false" opacity="0.83" prefHeight="46.0" prefWidth="395.0" text="Gestion Des Reclamations">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="Restaurant" layoutX="977.0" layoutY="324.0" mnemonicParsing="false" opacity="0.83" prefHeight="46.0" prefWidth="276.0" styleClass="Style.css" text="Gestion Des Restaurant">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="ReserverRestaurant" layoutX="898.0" layoutY="413.0" mnemonicParsing="false" opacity="0.83" prefHeight="46.0" prefWidth="395.0" text="Gestion Des Reservation Restaurant">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
+      <Text layoutX="293.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To Admin Pannel!" wrappingWidth="755.83984375">
+         <font>
+            <Font name="Bookshelf Symbol 7" size="61.0" />
+         </font>
+      </Text>
+      <Button fx:id="Gestion_User" layoutX="515.0" layoutY="585.0" mnemonicParsing="false" onAction="#Gestion_User" opacity="0.83" prefHeight="46.0" prefWidth="311.0" styleClass="Style.css" text="Gestion User">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
