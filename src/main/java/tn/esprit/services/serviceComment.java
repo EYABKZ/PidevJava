@@ -52,7 +52,7 @@ public class serviceComment implements IService<Comment> {
     @Override
     public void supprimer(int id_Comment) throws SQLException {
 
-        String sql = "delete from comment where id_Comment = ?";
+        String sql = " delete from comment where id_Comment = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id_Comment);
         preparedStatement.executeUpdate();

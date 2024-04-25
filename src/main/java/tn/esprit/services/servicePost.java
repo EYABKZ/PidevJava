@@ -54,13 +54,25 @@ public class servicePost implements IService<Post> {
     @Override
     public void supprimer(int id_Post) throws SQLException {
 
-        String sql = "delete from post where id_Post = ?";
+        String sql = "delete from comment where post_id= ? ; " ;
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, id_Post);
+        preparedStatement. setInt (1, id_Post);
         preparedStatement.executeUpdate();
 
-    }
+        String sql1 = "delete from post where id_post= ? ; " ;
+        PreparedStatement statement = connection.prepareStatement(sql1);
+      statement. setInt (1, id_Post);
+       statement.executeUpdate();
 
+
+    }
+    //String sql = "delete from comment where post_id= ? ; delete from Post where id_post=  ? ‘´ ;
+    //PreparedStatement preparedStatement = connection.prepareStatement
+    //preparedStatement. setInt (1, id_Post);
+    //
+    //preparedStatement. setInt (2, id_Post);
+
+  //  SET FOREIGN_KEY_CHECKS=0 ;
     @Override
     public List<Post> recuperer() throws SQLException {
         List<Post> posts = new ArrayList<>();

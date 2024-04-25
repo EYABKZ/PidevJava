@@ -48,5 +48,6 @@
          </font>
       </Label>
       <ListView fx:id="AfficherList" layoutX="40.0" layoutY="207.0" prefHeight="302.0" prefWidth="198.0" />
+
    </children>
 </AnchorPane>
