@@ -108,7 +108,7 @@ public class AfficherCControllers {
 
 
     public void goToModification(javafx.event.ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierC.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCM.fxml"));
 
         try {
             Parent root = loader.load();

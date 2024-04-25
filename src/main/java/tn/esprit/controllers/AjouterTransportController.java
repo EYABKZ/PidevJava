@@ -68,14 +68,37 @@ public class AjouterTransportController {
     void ajouterAction(ActionEvent event) {
         try {
             String imagePath = Transport_Picture.getImage().getUrl();
-            Moy_Transport T= new Moy_Transport(imagePath, txtTransport_Model.getText(), Integer.parseInt(txtTransport_Price.getText()), txtTransport_Description.getText(), txtDisponibility.getText());
+            String model = txtTransport_Model.getText();
+            String price = txtTransport_Price.getText();
+            String description = txtTransport_Description.getText();
+            String disponibility = txtDisponibility.getText();
+
+            // Check if the inputs are valid
+            if (!model.matches("[a-zA-Z]+") || model.isEmpty()) {
+                showAlert("Invalid input: txtTransport_Model should only contain characters and should not be empty.");
+                return;
+            }
+            if (!price.matches("\\d+") || price.isEmpty()) {
+                showAlert("Invalid input: txtTransport_Price should only contain integers and should not be empty.");
+                return;
+            }
+            if (!description.matches("[a-zA-Z]+") || description.isEmpty()) {
+                showAlert("Invalid input: txtTransport_Description should only contain characters and should not be empty.");
+                return;
+            }
+            if (!disponibility.matches("[a-zA-Z]+") || disponibility.isEmpty()) {
+                showAlert("Invalid input: txtDisponibility should only contain characters and should not be empty.");
+                return;
+            }
+
+            Moy_Transport T= new Moy_Transport(imagePath, model, Integer.parseInt(price), description, disponibility);
             int generatedId = sv.ajouter(T);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succes");
             alert.setContentText("Transport Ajouter avec succes");
             alert.show();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherT.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherTM.fxml"));
 
             try {
                 Parent root = loader.load();
@@ -134,7 +157,12 @@ public class AjouterTransportController {
         }
     }
 
-
+    void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 
     public void setTransport_Picture(String imagePath) {

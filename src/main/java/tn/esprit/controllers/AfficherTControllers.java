@@ -70,7 +70,7 @@ public class AfficherTControllers {
     }
 
     public void goToModification(javafx.event.ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierT.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierTM.fxml"));
 
         try {
             Parent root = loader.load();

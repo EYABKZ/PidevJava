@@ -84,7 +84,51 @@ public class AjouterCalendarController {
             date = txtEnd.getValue(); // Pour DatePicker
             String endDate = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-            Calendar C = new Calendar(
+
+                // Check if the inputs are valid
+                if (txtTitle.getText().isEmpty() || !txtTitle.getText().matches("[a-zA-Z]+")) {
+                    showAlert("Invalid input: txtTitle should only contain characters and should not be empty.");
+                    return;
+                }
+                if (txtStart.getValue() == null) {
+                    showAlert("Invalid input: txtStart should not be empty.");
+                    return;
+                }
+                if (txtEnd.getValue() == null) {
+                    showAlert("Invalid input: txtEnd should not be empty.");
+                    return;
+                }
+                if (txtDescription.getText().isEmpty() || !txtDescription.getText().matches("[a-zA-Z]+")) {
+                    showAlert("Invalid input: txtDescription should only contain characters and should not be empty.");
+                    return;
+                }
+                if (txtAll_Day.getText().isEmpty() || !txtAll_Day.getText().matches("\\d+")) {
+                    showAlert("Invalid input: txtAll_Day should only contain integers and should not be empty.");
+                    return;
+                }
+                if (txtBackgroundColor.getValue() == null) {
+                    showAlert("Invalid input: txtBackgroundColor should not be empty.");
+                    return;
+                }
+                if (txtBorderColor.getValue() == null) {
+                    showAlert("Invalid input: txtBorderColor should not be empty.");
+                    return;
+                }
+                if (txtTextColor.getValue() == null) {
+                    showAlert("Invalid input: txtTextColor should not be empty.");
+                    return;
+                }
+                if (txtTransport_Model.getValue() == null ) {
+                    showAlert("Invalid input: txtTransport_Model should not be empty.");
+                    return;
+                }
+                if (txtPassenger_Count.getText().isEmpty() || !txtPassenger_Count.getText().matches("\\d+")) {
+                    showAlert("Invalid input: txtPassenger_Count should only contain integers and should not be empty.");
+                    return;
+                }
+
+
+                Calendar C = new Calendar(
                     txtTitle.getText(),
                     startDate,
                     endDate,
@@ -104,7 +148,7 @@ public class AjouterCalendarController {
             alert.setContentText("Reservation Ajouter avec succes");
             alert.show();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherC.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCM.fxml"));
 
             try {
                 Parent root = loader.load();
@@ -170,6 +214,12 @@ public class AjouterCalendarController {
         }
 }
 
+        void showAlert(String message) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText(message);
+            alert.showAndWait();
+        }
 
     public void initialize() throws SQLException {
         List<Moy_Transport> transports = sv.recupererTousLesTransports();

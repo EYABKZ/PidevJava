@@ -14,7 +14,7 @@
          <children>
             <VBox layoutY="212.0" prefHeight="517.0" prefWidth="401.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="212.0">
                <children>
-                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Transport" textFill="WHITE">
+                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#ToAddAction" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Transport" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -25,7 +25,7 @@
                         <Insets />
                      </opaqueInsets>
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                      <VBox.margin>
                         <Insets />
@@ -34,9 +34,12 @@
                         <Insets left="-10.0" />
                      </padding>
                   </Button>
-                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" textFill="WHITE">
+                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#ToAddActionC" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Reservation" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/C:/Users/Admin/OneDrive%20-%20ESPRIT/Pictures/Saved%20Pictures/calendar-in-a-circle-interface-symbol-removebg-preview%20(1).png" />
+                           </image></ImageView>
                      </graphic>
                      <opaqueInsets>
                         <Insets />
@@ -44,8 +47,11 @@
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                      <padding>
-                        <Insets left="-10.0" />
+                        <Insets left="10.0" />
                      </padding>
                   </Button>
                   <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" textFill="WHITE">
@@ -92,14 +98,25 @@
       <Pane layoutX="401.0" prefHeight="732.0" prefWidth="847.0">
          <children>
             <Pane layoutX="-41.0" layoutY="-197.0" prefHeight="357.0" prefWidth="611.0" rotate="36.9" style="-fx-background-color: #Fa2C56; -fx-background-radius: 70;" />
-            <Button layoutX="301.0" layoutY="229.0" mnemonicParsing="false" onAction="#ToAddAction" prefHeight="230.0" prefWidth="245.0" styleClass="button2" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Button" />
-            <Circle fill="WHITE" layoutX="424.0" layoutY="344.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-            <ImageView fitHeight="61.0" fitWidth="63.0" layoutX="393.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true">
+            <Button layoutX="90.0" layoutY="329.0" mnemonicParsing="false" onAction="#ToListAction" prefHeight="230.0" prefWidth="245.0" styleClass="button2" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Button" />
+            <Circle fill="WHITE" layoutX="213.0" layoutY="444.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="81.0" fitWidth="72.0" layoutX="177.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/C:/Users/Admin/OneDrive%20-%20ESPRIT/Pictures/Saved%20Pictures/car-round-icon-512x512-56fz1b54.png" />
                </image>
             </ImageView>
-            <Label layoutX="366.0" layoutY="418.0" text="List Transport" textFill="WHITE">
+            <Label layoutX="155.0" layoutY="518.0" text="List Transport" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="493.0" layoutY="340.0" mnemonicParsing="false" onAction="#ToListActionC" prefHeight="209.0" prefWidth="245.0" styleClass="button2" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Button" />
+            <Circle fill="WHITE" layoutX="616.0" layoutY="445.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="69.0" fitWidth="83.0" layoutX="581.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Admin/OneDrive%20-%20ESPRIT/Pictures/Saved%20Pictures/calendar-in-a-circle-interface-symbol-removebg-preview%20(1).png" />
+               </image></ImageView>
+            <Label layoutX="549.0" layoutY="510.0" text="List Reservation" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

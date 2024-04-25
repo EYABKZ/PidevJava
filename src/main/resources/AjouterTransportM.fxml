@@ -17,73 +17,7 @@
    <children>
       <AnchorPane prefHeight="732.0" prefWidth="401.0" style="-fx-background-color: #393351;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox layoutY="212.0" prefHeight="517.0" prefWidth="401.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="212.0">
-               <children>
-                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Transport" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="file:/C:/Users/Admin/OneDrive%20-%20ESPRIT/Pictures/Saved%20Pictures/car-round-icon-512x512-56fz1b54.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="-10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Button>
-                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="-10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Button>
-                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="-10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Button>
-                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="-10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
+            <VBox layoutY="212.0" prefHeight="517.0" prefWidth="401.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="212.0" />
          </children>
       </AnchorPane>
       <Pane layoutY="96.0" prefHeight="81.0" prefWidth="401.0" style="-fx-background-color: #Fa2C56; -fx-background-radius: 5;">

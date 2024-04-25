@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="1248.0" style="-fx-background-color: #2F2B43; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherCControllers">
+   <children>
+      <AnchorPane prefHeight="732.0" prefWidth="401.0" style="-fx-background-color: #393351;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutY="212.0" prefHeight="517.0" prefWidth="401.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="212.0" />
+         </children>
+      </AnchorPane>
+      <Pane layoutY="96.0" prefHeight="81.0" prefWidth="401.0" style="-fx-background-color: #Fa2C56; -fx-background-radius: 5;">
+         <children>
+            <Label layoutX="33.0" layoutY="14.0" prefHeight="53.0" prefWidth="245.0" text="TravelWithMe" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="401.0" prefHeight="732.0" prefWidth="847.0">
+         <children>
+            <Pane layoutX="-41.0" layoutY="-197.0" prefHeight="357.0" prefWidth="611.0" rotate="36.9" style="-fx-background-color: #Fa2C56; -fx-background-radius: 70;" />
+            <ComboBox fx:id="txtTransport_Model" layoutX="419.0" layoutY="555.0" prefHeight="31.0" prefWidth="247.0" />
+            <TextField fx:id="txtId" editable="false" layoutX="403.0" layoutY="59.0" prefHeight="31.0" prefWidth="247.0" />
+            <Label layoutX="285.0" layoutY="60.0" text="Id" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtEnd" layoutX="409.0" layoutY="240.0" prefHeight="31.0" prefWidth="247.0" textFill="WHITE" />
+            <Label fx:id="txtStart" layoutX="409.0" layoutY="179.0" prefHeight="31.0" prefWidth="247.0" textFill="WHITE" />
+            <Label layoutX="273.0" layoutY="178.0" text="Start" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="277.0" layoutY="235.0" text="End" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="244.0" layoutY="314.0" text="Description" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="262.0" layoutY="382.0" text="All_Day" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="275.0" layoutY="111.0" text="Title" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTitle" editable="false" layoutX="405.0" layoutY="110.0" prefHeight="31.0" prefWidth="247.0" />
+            <TextField fx:id="txtDescription" editable="false" layoutX="405.0" layoutY="314.0" prefHeight="31.0" prefWidth="247.0" />
+            <TextField fx:id="txtAll_Day" editable="false" layoutX="406.0" layoutY="382.0" prefHeight="31.0" prefWidth="247.0" />
+            <Label layoutX="226.0" layoutY="439.0" text="Background_Color" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="485.0" layoutY="439.0" text="Border_Color" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="725.0" layoutY="439.0" text="Text_Color" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ColorPicker fx:id="txtBackgroundColor" layoutX="246.0" layoutY="488.0" />
+            <ColorPicker fx:id="txtBorderColor" layoutX="494.0" layoutY="488.0" />
+            <ColorPicker fx:id="txtTextColor" layoutX="725.0" layoutY="488.0" />
+            <TextField fx:id="txtPassenger_Count" editable="false" layoutX="417.0" layoutY="621.0" prefHeight="31.0" prefWidth="247.0" />
+            <Label layoutX="219.0" layoutY="622.0" text="Passenger_Count" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ListView fx:id="AfficherList" layoutX="23.0" layoutY="186.0" prefHeight="243.0" prefWidth="203.0" />
+            <Label layoutX="219.0" layoutY="555.0" text="Transport_Model" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="ModifierButton" layoutX="473.0" layoutY="673.0" mnemonicParsing="false" onAction="#goToModification" text="Modify Calendar" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

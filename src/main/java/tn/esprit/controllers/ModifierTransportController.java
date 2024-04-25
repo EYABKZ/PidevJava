@@ -115,7 +115,7 @@ public class ModifierTransportController {
             alert.showAndWait();
 
             // Reload the view
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherT.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherTM.fxml"));
             Parent root = loader.load();
 
             AfficherTControllers afficherTControllers = loader.getController();
@@ -203,7 +203,7 @@ public class ModifierTransportController {
                 alert.show();
 
                 // Reload the view
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterTransport.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterTransportM.fxml"));
                 try {
                     Parent root = loader.load();
 

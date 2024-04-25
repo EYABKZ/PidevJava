@@ -126,7 +126,7 @@ public class ModifierCalendarController {
             alert.showAndWait();
 
             // Reload the view
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherC.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCM.fxml"));
             Parent root = loader.load();
 
             AfficherCControllers afficherCControllers = loader.getController();
@@ -218,7 +218,7 @@ public class ModifierCalendarController {
                 alert.show();
 
                 // Reload the view
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCalendar.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCalendarM.fxml"));
                 try {
                     Parent root = loader.load();
 

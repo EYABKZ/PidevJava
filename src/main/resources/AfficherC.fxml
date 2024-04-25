@@ -17,6 +17,11 @@
          </font>
       </Label>
       <Button fx:id="ModifierButton" layoutX="828.0" layoutY="712.0" mnemonicParsing="false" onAction="#goToModification" text="Modify Calendar" />
+      <Label layoutX="574.0" layoutY="594.0" text="Transport_Model">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
       <ListView fx:id="AfficherList" layoutX="63.0" layoutY="204.0" prefHeight="470.0" prefWidth="437.0" />
       <Label layoutX="574.0" layoutY="661.0" text="Passenger_Count">
          <font>
@@ -24,11 +29,6 @@
          </font>
       </Label>
       <TextField fx:id="txtPassenger_Count" editable="false" layoutX="772.0" layoutY="660.0" prefHeight="31.0" prefWidth="247.0" />
-      <Label layoutX="574.0" layoutY="594.0" text="Transport_Model">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
       <ColorPicker fx:id="txtTextColor" layoutX="1080.0" layoutY="527.0" />
       <ColorPicker fx:id="txtBorderColor" layoutX="849.0" layoutY="527.0" />
       <ColorPicker fx:id="txtBackgroundColor" layoutX="601.0" layoutY="527.0" />
