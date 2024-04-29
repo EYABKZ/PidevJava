@@ -37,5 +37,6 @@
       <Button fx:id="Modifier_btn" layoutX="571.0" layoutY="459.0" mnemonicParsing="false" onAction="#goToModification" prefHeight="38.0" prefWidth="167.0" text="Modify Info" />
       <Label layoutX="153.0" layoutY="394.0" opacity="0.0" text="id" />
       <TextField fx:id="txtId" editable="false" layoutX="607.0" layoutY="25.0" opacity="0.0" />
+      <AnchorPane layoutX="20.0" layoutY="19.0" prefHeight="531.0" prefWidth="348.0" styleClass="anchor" stylesheets="@css/design.css" />
    </children>
 </AnchorPane>

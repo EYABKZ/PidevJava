@@ -7,6 +7,7 @@ package tn.esprit.controllers;/*
 
 import javafx.fxml.Initializable;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -54,6 +55,11 @@ import tn.esprit.services.ServicePersonne;
 import java.io.File;
 import java.io.IOException;
 
+import tn.esprit.entities.Pdf;
+
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -81,6 +87,9 @@ public class AdminController implements Initializable {
     @FXML
     private TextField Recherche_User;
 
+    @FXML
+    private TextField txtStat;
+
 
     private Connection cnx;
     private Statement statement;
@@ -97,6 +106,7 @@ public class AdminController implements Initializable {
         try {
             showRec();
             searchRec();
+            stat();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -156,6 +166,7 @@ public class AdminController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Utilisateur supprimé");
         alert.showAndWait();
+        stat();
 
     }
 
@@ -179,6 +190,7 @@ public class AdminController implements Initializable {
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
         showRec();
+        stat();
 
     }
 
@@ -211,6 +223,47 @@ public class AdminController implements Initializable {
         sortedData.comparatorProperty().bind(tableviewUser.comparatorProperty());
         tableviewUser.setItems(sortedData);
     }
+
+
+
+
+    @FXML
+    private void pdf_print(ActionEvent event) throws IOException, NoSuchMethodException, InstantiationException, InvocationTargetException, IllegalAccessException, SQLException {
+
+
+        Personne voy = tableviewUser.getSelectionModel().getSelectedItem();
+
+        Pdf pd=new Pdf();
+        try{
+            pd.GeneratePdf(""+voy.getLastname()+"",voy,voy.getId());
+            Alert alert= new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("PDF");
+            alert.setHeaderText(null);
+            alert.setContentText("!!!PDF exported!!!");
+            alert.showAndWait();
+            System.out.println("impression done");
+        } catch (Exception ex) {
+            Logger.getLogger(ServicePersonne.class.getName()).log(Level.SEVERE, null, ex);
+            Alert alert= new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Alert");
+            alert.setHeaderText(null);
+            alert.setContentText("!!!Selectioner une Voyage!!!");
+            alert.showAndWait();
+        }
+
+
+
+    }
+
+    private void stat() {
+        try {
+            String resultSet= sv.stat_count();
+            txtStat.setText(String.valueOf(resultSet));
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 
 
 }

@@ -155,6 +155,22 @@ public class ServicePersonne implements IService<Personne> {
         return smt;
     }
 
+    public String stat_count() throws SQLException {
+        Statement statement = connection.createStatement();
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM User");
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return String.valueOf(count);
+            } else {
+                throw new RuntimeException("No rows returned from the query.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
 
 

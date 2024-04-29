@@ -108,3 +108,10 @@ and open the template in the editor.
     -fx-text-fill: transparent; /* Black text color */
     -fx-border-width: 0; /* No border */
 }
+
+.anchor {
+    -fx-background-image:url('travel_img.jpeg');
+    -fx-background-size: cover; /* Adjust background size as needed */
+    -fx-background-repeat: no-repeat; /* Adjust background repeat as needed */
+}
+
