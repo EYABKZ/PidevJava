@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import tn.esprit.entities.Calendar;
 import tn.esprit.entities.Moy_Transport;
 import tn.esprit.services.ServiceCalendar;
@@ -189,6 +190,29 @@ public class ModifierCalendarController {
             alert.setContentText("Erreur SQL : " + e.getMessage());
             alert.showAndWait();
         }
+    }
+
+    public void initialize() throws SQLException {
+        List<Moy_Transport> transports = sv.recupererTousLesTransports();
+        ObservableList<Moy_Transport> observableList = FXCollections.observableArrayList(transports);
+        txtTransport_Model.setItems(observableList);
+
+        txtTransport_Model.setCellFactory(new Callback<ListView<Moy_Transport>, ListCell<Moy_Transport>>() {
+
+            public ListCell<Moy_Transport> call(ListView<Moy_Transport> param) {
+                return new ListCell<Moy_Transport>() {
+                    @Override
+                    protected void updateItem(Moy_Transport item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getTransport_Model()); // Affichez la propriété que vous voulez
+                        }
+                    }
+                };
+            }
+        });
     }
 
     @FXML

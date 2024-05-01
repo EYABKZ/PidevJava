@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="1248.0" style="-fx-background-color: #2F2B43; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCalendarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="1248.0" style="-fx-background-color: #2F2B43; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCalendarController">
    <children>
       <AnchorPane prefHeight="732.0" prefWidth="401.0" style="-fx-background-color: #393351;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -90,8 +83,8 @@
                </font>
             </Label>
             <ComboBox fx:id="txtTransport_Model" layoutX="321.0" layoutY="603.0" prefHeight="31.0" prefWidth="247.0" />
-            <TextField fx:id="txtId" editable="false" layoutX="315.0" layoutY="100.0" prefHeight="31.0" prefWidth="247.0" />
-            <Label layoutX="196.0" layoutY="93.0" text="id" textFill="WHITE">
+            <TextField fx:id="txtId" editable="false" layoutX="315.0" layoutY="100.0" opacity="0.0" prefHeight="31.0" prefWidth="247.0" />
+            <Label layoutX="196.0" layoutY="93.0" opacity="0.0" text="id" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

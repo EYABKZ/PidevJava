@@ -17,7 +17,7 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Design.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Calendar.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add("file:///C:/Users/Admin/IdeaProjects/ProjetPidev/src/main/java/tn/esprit/css/fullpackstyling.css");
             primaryStage.setTitle("Ajouter Calendar");

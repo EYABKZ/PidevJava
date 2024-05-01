@@ -24,8 +24,8 @@
          <children>
             <Pane layoutX="-41.0" layoutY="-197.0" prefHeight="357.0" prefWidth="611.0" rotate="36.9" style="-fx-background-color: #Fa2C56; -fx-background-radius: 70;" />
             <ComboBox fx:id="txtTransport_Model" layoutX="419.0" layoutY="555.0" prefHeight="31.0" prefWidth="247.0" />
-            <TextField fx:id="txtId" editable="false" layoutX="403.0" layoutY="59.0" prefHeight="31.0" prefWidth="247.0" />
-            <Label layoutX="285.0" layoutY="60.0" text="Id" textFill="WHITE">
+            <TextField fx:id="txtId" editable="false" layoutX="403.0" layoutY="59.0" opacity="0.0" prefHeight="31.0" prefWidth="247.0" />
+            <Label layoutX="285.0" layoutY="60.0" opacity="0.0" text="Id" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

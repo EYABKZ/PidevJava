@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="1248.0" style="-fx-background-color: #2F2B43; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherTControllers">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="1248.0" style="-fx-background-color: #2F2B43; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherTControllers">
    <children>
       <AnchorPane prefHeight="732.0" prefWidth="401.0" style="-fx-background-color: #393351;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -56,12 +50,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="432.0" layoutY="359.0" text="id" textFill="WHITE">
+            <Label layoutX="432.0" layoutY="359.0" opacity="0.0" text="id" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtId" editable="false" layoutX="543.0" layoutY="358.0" />
+            <TextField fx:id="txtId" editable="false" layoutX="543.0" layoutY="358.0" opacity="0.0" />
             <Button fx:id="ModifierButton" layoutX="560.0" layoutY="656.0" mnemonicParsing="false" onAction="#goToModification" text="Modify Transport" />
          </children>
       </Pane>

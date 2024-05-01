@@ -11,7 +11,7 @@ public class Calendar {
     private String Background_Color;
     private String Border_Color;
     private String Text_Color;
-    private static Moy_Transport id_transport;
+    private Moy_Transport id_transport;
     private int Passenger_Count;
 
     public Calendar() {
@@ -102,7 +102,7 @@ public class Calendar {
         Text_Color = text_Color;
     }
 
-    public static Moy_Transport getId_transport() {
+    public Moy_Transport getId_transport() {
         return id_transport;
     }
 

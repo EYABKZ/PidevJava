@@ -28,7 +28,7 @@ public class ServiceCalendar implements IService<Calendar> {
         statement.setString(6, calendar.getBackground_Color());
         statement.setString(7, calendar.getBorder_Color());
         statement.setString(8, calendar.getText_Color());
-        statement.setInt(9, Calendar.getId_transport().getId_transport());
+        statement.setInt(9, calendar.getId_transport().getId_transport());
         statement.setInt(10, calendar.getPassenger_Count());
         statement.executeUpdate();
 
@@ -88,8 +88,7 @@ public class ServiceCalendar implements IService<Calendar> {
             t.setBackground_Color(rs.getString("Background_Color"));
             t.setBorder_Color(rs.getString("Border_Color"));
             t.setText_Color(rs.getString("Text_Color"));
-            Moy_Transport transport = new Moy_Transport();
-            transport.setId_transport(rs.getInt("id_transport"));
+            t.setId_transport(new Moy_Transport(rs.getInt("transport_id"), rs.getString("Transport_Picture"), rs.getString("Transport_Model"), rs.getInt("Transport_Price"), rs.getString("Transport_Description"), rs.getString("Disponibility")));
             t.setPassenger_Count(rs.getInt("Passenger_Count"));
             calendars.add(t);
         }
