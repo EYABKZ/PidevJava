@@ -1,5 +1,7 @@
 package tn.esprit.controllers;
 
+
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -15,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import tn.esprit.entities.Personne;
 import tn.esprit.services.ServicePersonne;
@@ -28,6 +31,8 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.management.Notification;
+
 
 import utils.MyConnection;
 //import utils.SessionManager;
@@ -84,7 +89,7 @@ public class SignInController {
     }
 
     @FXML
-    void loginAction(javafx.event.ActionEvent event) throws IOException {
+    void loginAction(ActionEvent event) throws IOException {
         if(email_signin.getText().equals("admin") && password_signin.getText().equals("admin") )
         {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -106,6 +111,7 @@ public class SignInController {
         String pass = password_signin.getText();
         sv.login(email,pass);
     }
+
 
     }
 

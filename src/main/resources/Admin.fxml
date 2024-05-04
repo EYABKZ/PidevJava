@@ -24,7 +24,7 @@
         <Button fx:id="supprimer_btn" layoutX="568.0" layoutY="366.0" mnemonicParsing="false" onAction="#SupprimerUser" prefHeight="31.0" prefWidth="95.0" text="Delete" />
         <Button layoutX="468.0" layoutY="366.0" mnemonicParsing="false" onAction="#ModifierUser" prefHeight="31.0" prefWidth="95.0" text="Edit" />
         <Button layoutX="586.0" layoutY="11.0" mnemonicParsing="false" onAction="#exit" prefHeight="31.0" prefWidth="77.0" styleClass="exit" text="LogOut" AnchorPane.leftAnchor="586.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="11.0" />
-        <Button layoutX="399.0" layoutY="366.0" mnemonicParsing="false" onAction="#pdf_print" prefHeight="31.0" prefWidth="60.0" text="PDF" />
+        <Button layoutX="399.0" layoutY="366.0" mnemonicParsing="false" onAction="#imprimer" prefHeight="31.0" prefWidth="60.0" text="PDF" />
         <TextField fx:id="Recherche_User" layoutX="15.0" layoutY="365.0" prefHeight="31.0" prefWidth="277.0" promptText="Recherche..." styleClass="textfield-design">
             <font>
                 <Font size="15.0" />

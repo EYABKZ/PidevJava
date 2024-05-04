@@ -5,11 +5,18 @@ package tn.esprit.controllers;/*
 //  */
 
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Image;
 import javafx.fxml.Initializable;
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 import java.net.URL;
@@ -18,9 +25,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,11 +49,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import tn.esprit.entities.Personne;
 import tn.esprit.services.ServicePersonne;
+
 
 
 import java.io.File;
@@ -227,33 +233,7 @@ public class AdminController implements Initializable {
 
 
 
-    @FXML
-    private void pdf_print(ActionEvent event) throws IOException, NoSuchMethodException, InstantiationException, InvocationTargetException, IllegalAccessException, SQLException {
 
-
-        Personne voy = tableviewUser.getSelectionModel().getSelectedItem();
-
-        Pdf pd=new Pdf();
-        try{
-            pd.GeneratePdf(""+voy.getLastname()+"",voy,voy.getId());
-            Alert alert= new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("PDF");
-            alert.setHeaderText(null);
-            alert.setContentText("!!!PDF exported!!!");
-            alert.showAndWait();
-            System.out.println("impression done");
-        } catch (Exception ex) {
-            Logger.getLogger(ServicePersonne.class.getName()).log(Level.SEVERE, null, ex);
-            Alert alert= new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Alert");
-            alert.setHeaderText(null);
-            alert.setContentText("!!!Selectioner une Voyage!!!");
-            alert.showAndWait();
-        }
-
-
-
-    }
 
     private void stat() {
         try {
@@ -263,6 +243,117 @@ public class AdminController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
+
+
+
+    @FXML
+    private void imprimer(ActionEvent event) {
+        try {
+            Personne r = tableviewUser.getSelectionModel().getSelectedItem();
+            OutputStream file = new FileOutputStream(new File("C:\\Users\\yassi\\OneDrive\\Bureau\\ProjetPidev\\" + r.getLastname() + ".pdf"));
+            com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+            PdfWriter.getInstance(document, file);
+            document.open();
+            ServicePersonne sm = new ServicePersonne();
+            // Get user information
+
+
+            document.add(new Paragraph("-- This page is CopyRighted by The Developers --"));
+            document.add(new Paragraph("-- Alert : This pdf can be used only for administrational purposes! --\n\n", FontFactory.getFont(FontFactory.TIMES_ROMAN, 16, BaseColor.RED)));
+            // Add placeholder image
+            Image image = Image.getInstance(generateRandomProfilePicture()); // Change the path to your placeholder image
+            document.add(image);
+            document.add(new Paragraph(" ___________________________________________________________________________\n"));
+            document.add(new Paragraph(" UserName :  " + r.getLastname() + "  \n"));
+            document.add(new Paragraph(" User Email  :  " + r.getEmail() + "  \n"));
+            document.add(new Paragraph(" ___________________________________________________________________________\n"));
+
+            // Generate fake details
+            document.add(new Paragraph(" Age: " + generateRandomAge() + "\n"));
+            document.add(new Paragraph(" Gender: " + generateRandomGender() + "\n"));
+            document.add(new Paragraph(" Date of Birth: " + generateRandomDOB() + "\n"));
+            document.add(new Paragraph(" ___________________________________________________________________________\n"));
+
+            document.add(new Paragraph(" University: " + generateRandomUniversity() + "\n"));
+            document.add(new Paragraph(" Country: " + generateRandomCountry() + "\n"));
+            document.add(new Paragraph(" Nationality: " + generateRandomNationality() + "\n"));
+
+
+
+            document.add(new Paragraph(" ___________________________________________________________________________\n"));
+            document.close();
+            file.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Travel Me");
+            alert.setHeaderText(null);
+            alert.setContentText("pdf generated");
+            alert.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Travel Me :: Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("select a user");
+            alert.showAndWait();
+        }
+    }
+
+    // Method to generate random age (between 18 and 65 for example)
+    private int generateRandomAge() {
+        return (int)(Math.random() * (65 - 18 + 1) + 18);
+    }
+
+    // Method to generate random gender
+    private String generateRandomGender() {
+        String[] genders = {"Male", "Female"};
+        return genders[(int)(Math.random() * genders.length)];
+    }
+
+    // Method to generate random date of birth
+    private String generateRandomDOB() {
+        // Generating a random date of birth within the last 50 years
+        int year = (int)(Math.random() * 50) + 1970;
+        int month = (int)(Math.random() * 12) + 1;
+        int day = (int)(Math.random() * 28) + 1; // Simplification, assuming all months have 28 days
+        return day + "/" + month + "/" + year;
+    }
+
+    // Method to generate random university
+    private String generateRandomUniversity() {
+        String[] universities = {"Harvard University", "Stanford University", "Massachusetts Institute of Technology (MIT)", "University of Cambridge", "University of Oxford"};
+        return universities[(int)(Math.random() * universities.length)];
+    }
+
+    // Method to generate random country
+    private String generateRandomCountry() {
+        String[] countries = {"USA", "Canada", "UK", "France", "Germany", "Australia", "Japan", "China"};
+        return countries[(int)(Math.random() * countries.length)];
+    }
+
+    // Method to generate random nationality
+    private String generateRandomNationality() {
+        String[] nationalities = {"American", "Canadian", "British", "French", "German", "Australian", "Japanese", "Chinese"};
+        return nationalities[(int)(Math.random() * nationalities.length)];
+    }
+
+    // Method to generate random profile picture URL
+    private String generateRandomProfilePicture() {
+        // List of placeholder image URLs
+        String[] profilePictures = {
+                "C:\\Users\\yassi\\OneDrive\\Bureau\\ProjetPidev\\src\\main\\Img\\pic 1.jpg",
+                "C:\\Users\\yassi\\OneDrive\\Bureau\\ProjetPidev\\src\\main\\Img\\pic 2.jpg",
+                "C:\\Users\\yassi\\OneDrive\\Bureau\\ProjetPidev\\src\\main\\Img\\pic 3.jpg",
+                "C:\\Users\\yassi\\OneDrive\\Bureau\\ProjetPidev\\src\\main\\Img\\pic 4.jpg",
+                "C:\\Users\\yassi\\OneDrive\\Bureau\\ProjetPidev\\src\\main\\Img\\pic 5.jpg",
+                // Add more placeholder image URLs as needed
+        };
+        // Generate a random index to select a profile picture URL
+        int randomIndex = (int)(Math.random() * profilePictures.length);
+        return profilePictures[randomIndex];
+    }
+
+
 
 
 
