@@ -26,5 +26,6 @@
       <TextField fx:id="txtId_comment" editable="false" layoutX="243.0" layoutY="111.0" />
       <Button fx:id="supprimer_btn" layoutX="356.0" layoutY="402.0" mnemonicParsing="false" onAction="#SupprimerAction" text="Supprimer" />
       <Label layoutX="165.0" layoutY="365.0" />
+      <Button fx:id="AfficherButton" layoutX="273.0" layoutY="345.0" mnemonicParsing="false" onAction="#AfficherPost" text="Retour" />
    </children>
 </AnchorPane>

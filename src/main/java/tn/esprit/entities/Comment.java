@@ -9,8 +9,6 @@ public class Comment {
     private Comment parent_comment_id;
     private React reacts_id;
 
-
-
     public Comment()
     {}
 
@@ -21,11 +19,7 @@ public class Comment {
         this.post_id = post_id;
         this.parent_comment_id = parent_comment_id;
         this.reacts_id = reacts_id;
-
-
-
     }
-
     public int getId_Comment() {
         return id_Comment;
     }
@@ -77,10 +71,6 @@ public class Comment {
     public void setReacts_id(React reacts_id) {
         this.reacts_id = reacts_id;
     }
-
-
-
-
     @Override
     public String toString() {
         return "{" +

@@ -76,7 +76,7 @@ public class AjouterPostControllers {
                         alert.setTitle("Success");
                         alert.setContentText("Post added successfully");
                         alert.show();
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherP.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost.fxml"));
 
                         try {
                             Parent root = loader.load();

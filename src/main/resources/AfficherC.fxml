@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -9,11 +11,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="modifierButton" prefHeight="791.0" prefWidth="1214.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherCommentControllers">
+<AnchorPane fx:id="modifierButton" opacity="0.72" prefHeight="791.0" prefWidth="1214.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherCommentControllers">
    <children>
-      <Label layoutX="246.0" layoutY="81.0" text="Afficher Comment">
+      <Label layoutX="246.0" layoutY="81.0" text="Afficher Comment" textFill="#c94545">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Button fx:id="ModifierButton" layoutX="804.0" layoutY="370.0" mnemonicParsing="false" onAction="#goToModification" text="Modify Comment" />
@@ -48,6 +50,10 @@
          </font>
       </Label>
       <ListView fx:id="AfficherList" layoutX="40.0" layoutY="207.0" prefHeight="302.0" prefWidth="198.0" />
-
+  
+    
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>

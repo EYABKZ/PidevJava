@@ -100,6 +100,7 @@ public class AfficherPostControllers {
         try {
             // Get posts from service
             ObservableList<Post> items = FXCollections.observableArrayList(sv.recuperer());
+
             AfficherList.setItems(items);
 
             // Set cell factory

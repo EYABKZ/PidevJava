@@ -57,7 +57,6 @@ public class ModifierPostController {
 
 
 
-
     @FXML
     void ModifierAction() {
         try {

@@ -24,7 +24,8 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage)  throws  Exception{
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherP.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherPost .fxml"));
+
             Scene scene = new Scene(root);
             primaryStage.setTitle("Afficher Post");
             primaryStage.setScene(scene);

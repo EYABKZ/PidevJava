@@ -45,6 +45,7 @@ public class AjouterCommentControllers {
             Comment c=new Comment(Integer.parseInt(txtReplies_Count.getText()), txtContent.getText(), txtAuthorC.getText(),p,null,null);
             int generatedId = sv.ajouter(c);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            
             alert.setTitle("Succes");
             alert.setContentText("Post Ajouté avec succes");
             alert.show();
