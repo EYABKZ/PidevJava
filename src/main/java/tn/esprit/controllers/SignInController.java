@@ -2,6 +2,11 @@ package tn.esprit.controllers;
 
 
 
+
+
+
+
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -18,7 +23,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import tn.esprit.entities.Personne;
 import tn.esprit.services.ServicePersonne;
 
@@ -31,8 +38,9 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.management.Notification;
 
+
+import org.controlsfx.control.Notifications;
 
 import utils.MyConnection;
 //import utils.SessionManager;
@@ -88,6 +96,21 @@ public class SignInController {
         }
     }
 
+
+    private void notiff() {
+        String imagePath = "file:///C:/Users/yassi/OneDrive/Bureau/ProjetPidev/src/main/Img/tick.jpg";
+        Image image = new Image(imagePath);
+
+
+        Notifications notifications=Notifications.create();
+        notifications.graphic(new ImageView(image));
+        notifications.text("you logged in successfully \n Welcome to Travel_with_me!");
+        notifications.title("valid Log in");
+        notifications.hideAfter(Duration.seconds(4));
+
+        notifications.show();
+    }
+
     @FXML
     void loginAction(ActionEvent event) throws IOException {
         if(email_signin.getText().equals("admin") && password_signin.getText().equals("admin") )
@@ -97,6 +120,8 @@ public class SignInController {
             alert.setHeaderText(null);
             alert.setContentText("Bienvenu Admin");
             alert.showAndWait();
+
+            notiff();
 
             Parent root = FXMLLoader.load(getClass().getResource("/Back.fxml"));
             Scene scene;
@@ -110,6 +135,7 @@ public class SignInController {
         String email = email_signin.getText();
         String pass = password_signin.getText();
         sv.login(email,pass);
+        notiff();
     }
 
 
@@ -207,5 +233,7 @@ public class SignInController {
         //sendMail(email_signin.getText());
         sendPassword();
     }
+
+
 
 }
