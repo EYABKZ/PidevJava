@@ -73,11 +73,7 @@ public class AjouterTransportController {
             String description = txtTransport_Description.getText();
             String disponibility = txtDisponibility.getText();
 
-            // Check if the inputs are valid
-            if (!model.matches("[a-zA-Z]+") || model.isEmpty()) {
-                showAlert("Invalid input: txtTransport_Model should only contain characters and should not be empty.");
-                return;
-            }
+
             if (!price.matches("\\d+") || price.isEmpty()) {
                 showAlert("Invalid input: txtTransport_Price should only contain integers and should not be empty.");
                 return;
@@ -94,7 +90,7 @@ public class AjouterTransportController {
             Moy_Transport T= new Moy_Transport(imagePath, model, Integer.parseInt(price), description, disponibility);
             int generatedId = sv.ajouter(T);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Succes");
+             alert.setTitle("Succes");
             alert.setContentText("Transport Ajouter avec succes");
             alert.show();
 
@@ -104,43 +100,7 @@ public class AjouterTransportController {
                 Parent root = loader.load();
                 AfficherTControllers afficherTControllers = loader.getController();
 
-                // Fetch all Transport_Model from the database
-                List<Moy_Transport> allTransports = sv.recuperer();
 
-                // Add all transports to the ListView
-                ObservableList<Moy_Transport> items = FXCollections.observableArrayList(allTransports);
-                afficherTControllers.AfficherList.setItems(items);
-
-                // Use a CellFactory to display the Transport_Model as the text of the list items
-                afficherTControllers.AfficherList.setCellFactory(param -> new ListCell<Moy_Transport>() {
-                    @Override
-                    protected void updateItem(Moy_Transport item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        if (empty || item == null || item.getTransport_Model() == null) {
-                            setText(null);
-                        } else {
-                            setText(item.getTransport_Model());
-                        }
-                    }
-                });
-
-                // Set an on-click listener for the ListView items
-                afficherTControllers.AfficherList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                    // Fetch the details of the selected transport
-                    Moy_Transport selectedTransport = newValue;
-
-                    // Display the details of the selected transport
-                    afficherTControllers.settxtTransport_Model(selectedTransport.getTransport_Model());
-                    afficherTControllers.setTransport_Picture(selectedTransport.getTransport_Picture());
-                    afficherTControllers.settxtTransport_Price(String.valueOf(selectedTransport.getTransport_Price()));
-                    afficherTControllers.settxtTransport_Description(selectedTransport.getTransport_Description());
-                    afficherTControllers.settxtDisponibility(selectedTransport.getDisponibility());
-                    afficherTControllers.settxtId(String.valueOf(selectedTransport.getId_transport()));
-                });
-
-                // Debug statement to check if root is loaded successfully
-                System.out.println("FXML loaded successfully.");
 
                 txtTransport_Description.getScene().setRoot(root);
             } catch (IOException e) {

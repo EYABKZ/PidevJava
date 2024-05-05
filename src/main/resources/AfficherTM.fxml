@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -24,39 +23,23 @@
       <Pane layoutX="401.0" prefHeight="732.0" prefWidth="847.0">
          <children>
             <Pane layoutX="-41.0" layoutY="-197.0" prefHeight="357.0" prefWidth="611.0" rotate="36.9" style="-fx-background-color: #Fa2C56; -fx-background-radius: 70;" />
-            <ListView fx:id="AfficherList" layoutX="57.0" layoutY="307.0" prefHeight="348.0" prefWidth="237.0" />
-            <Label layoutX="366.0" layoutY="404.0" text="Transport_Model" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="372.0" layoutY="466.0" text="Transport_Price" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="335.0" layoutY="528.0" text="Transport_Description" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtTransport_Model" editable="false" layoutX="543.0" layoutY="409.0" />
-            <TextField fx:id="txtTransport_Price" editable="false" layoutX="543.0" layoutY="473.0" />
-            <TextField fx:id="txtTransport_Description" editable="false" layoutX="543.0" layoutY="527.0" />
-            <ImageView fx:id="Transport_Picture" fitHeight="239.0" fitWidth="446.0" layoutX="373.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
-            <TextField fx:id="txtDisponibility" editable="false" layoutX="543.0" layoutY="584.0" />
-            <Label layoutX="377.0" layoutY="591.0" text="Disponibility" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="432.0" layoutY="359.0" opacity="0.0" text="id" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtId" editable="false" layoutX="543.0" layoutY="358.0" opacity="0.0" />
-            <Button fx:id="ModifierButton" layoutX="560.0" layoutY="656.0" mnemonicParsing="false" onAction="#goToModification" text="Modify Transport" />
+            <Button fx:id="exportButton" layoutX="673.0" layoutY="560.0" mnemonicParsing="false" onAction="#exportToExcel" prefHeight="43.0" prefWidth="160.0" styleClass="myButton" text="Export to Excel" />
+            <Button fx:id="statistiqueButton" layoutX="150.0" layoutY="453.0" mnemonicParsing="false" onAction="#showStatistics" prefHeight="25.0" prefWidth="115.0" styleClass="myButton" text="Statistique par prix" />
+            <Button fx:id="sortButton" layoutX="681.0" layoutY="453.0" onAction="#handleSortButtonClick" styleClass="myButton" text="Trier Model" />
+            <TextField fx:id="searchTextField" layoutX="571.0" layoutY="85.0" promptText="Enter marque to search" />
+            <HBox layoutX="-106.0" layoutY="43.0" spacing="5" />
+            <Button fx:id="updateButton" layoutX="510.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleUpdateButton" styleClass="myButton" text="Modifier" />
+            <Button fx:id="deleteButton" layoutX="352.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleDeleteButton" styleClass="myButton" text="Supprimer" />
+            <TableView fx:id="tableviewVoiture" layoutX="109.0" layoutY="134.0" onMouseClicked="#handleRowSelection" prefHeight="295.0" prefWidth="711.0" styleClass="table-view">
+               <columns>
+                  <TableColumn fx:id="colMarque" prefWidth="143.0" text="Model" />
+                  <TableColumn fx:id="colAnnee" prefWidth="96.0" text="Prix" />
+                  <TableColumn fx:id="colPrix_j" prefWidth="168.0" text="Description" />
+                  <TableColumn fx:id="colKilometrage" prefWidth="103.0" text="Disponibility" />
+                  <TableColumn fx:id="colNbrPlaces" prefWidth="200.0" text="Picture" />
+               </columns>
+            </TableView>
+            <VBox fx:id="address" layoutX="143.0" layoutY="490.0" prefHeight="226.0" prefWidth="507.0" />
          </children>
       </Pane>
    </children>

@@ -118,41 +118,6 @@ public class ModifierTransportController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherTM.fxml"));
             Parent root = loader.load();
 
-            AfficherTControllers afficherTControllers = loader.getController();
-            List<Moy_Transport> allTransports = sv.recuperer();
-
-            // Add all transports to the ListView
-            ObservableList<Moy_Transport> items = FXCollections.observableArrayList(allTransports);
-            afficherTControllers.AfficherList.setItems(items);
-
-            // Use a CellFactory to display the Transport_Model as the text of the list items
-            afficherTControllers.AfficherList.setCellFactory(param -> new ListCell<Moy_Transport>() {
-                @Override
-                protected void updateItem(Moy_Transport item, boolean empty) {
-                    super.updateItem(item, empty);
-
-                    if (empty || item == null || item.getTransport_Model() == null) {
-                        setText(null);
-                    } else {
-                        setText(item.getTransport_Model());
-                    }
-                }
-            });
-
-            // Set an on-click listener for the ListView items
-            afficherTControllers.AfficherList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                // Fetch the details of the selected transport
-                Moy_Transport selectedTransport = newValue;
-
-                // Display the details of the selected transport
-                afficherTControllers.settxtTransport_Model(selectedTransport.getTransport_Model());
-                afficherTControllers.setTransport_Picture(selectedTransport.getTransport_Picture());
-                afficherTControllers.settxtTransport_Price(String.valueOf(selectedTransport.getTransport_Price()));
-                afficherTControllers.settxtTransport_Description(selectedTransport.getTransport_Description());
-                afficherTControllers.settxtDisponibility(selectedTransport.getDisponibility());
-                afficherTControllers.settxtId(String.valueOf(selectedTransport.getId_transport()));
-            });
-
             // Get the current stage from the event source
             Stage stage = (Stage) txtId.getScene().getWindow();
 
@@ -231,6 +196,16 @@ public class ModifierTransportController {
         }
     }
 
+    public void setTextFields(Moy_Transport R){
+        txtId.setText(String.valueOf(R.getId_transport()));
+        txtTransport_Model.setText(R.getTransport_Model());
+        txtTransport_Price.setText(String.valueOf(R.getTransport_Price()));
+        txtTransport_Description.setText(R.getTransport_Description());
+        txtDisponibility.setText(R.getDisponibility());
+
+        Image image = new Image(R.getTransport_Picture());
+        Transport_Picture.setImage(image);
+    }
 
 }
 
