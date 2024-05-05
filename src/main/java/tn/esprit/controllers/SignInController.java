@@ -1,16 +1,15 @@
 package tn.esprit.controllers;
 
-
-
-
-
-
-
+import javafx.embed.swing.SwingFXUtils;
+import nl.captcha.Captcha;
+import nl.captcha.backgrounds.FlatColorBackgroundProducer;
+import nl.captcha.gimpy.FishEyeGimpyRenderer;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+import java.awt.*;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -60,10 +59,23 @@ public class SignInController {
     @FXML
     private TextField password_signin;
 
+    @FXML
+    private ImageView captchImg;
+    Captcha captcha= new Captcha.Builder(250, 150).build();
+    boolean captchaIsCorrect;
+
+    @FXML
+    private TextField captchaInput;
+
     private Connection cnx;
     private Statement statement;
     private PreparedStatement prepare;
     private ResultSet result;
+
+    public void initialize() {
+        generateCaptcha();
+        captchaIsCorrect=false;
+    }
 
     public void setEmail_signin(String email_signin) {
         this.email_signin.setText(email_signin);
@@ -97,7 +109,7 @@ public class SignInController {
     }
 
 
-    private void notiff() {
+    private void notiff_login() {
         String imagePath = "file:///C:/Users/yassi/OneDrive/Bureau/ProjetPidev/src/main/Img/tick.jpg";
         Image image = new Image(imagePath);
 
@@ -111,8 +123,35 @@ public class SignInController {
         notifications.show();
     }
 
+    private void notiff_captcha() {
+        String imagePath = "file:///C:/Users/yassi/OneDrive/Bureau/ProjetPidev/src/main/Img/captcha.png";
+        Image image = new Image(imagePath);
+
+
+        Notifications notifications=Notifications.create();
+        notifications.graphic(new ImageView(image));
+        notifications.text("you need to valid your captcha");
+        notifications.title("invalid captcha");
+        notifications.hideAfter(Duration.seconds(4));
+
+        notifications.show();
+    }
+
     @FXML
     void loginAction(ActionEvent event) throws IOException {
+
+        System.out.println(captchaInput.getText()+" c le input");
+        System.out.println("captchaInput.getText().isEmpty()"+captchaInput.getText().isEmpty());
+        if (captchaInput.getText().isEmpty()) {
+            notiff_captcha();
+            return;
+        }
+        System.out.println("isValidCaptcha()"+isValidCaptcha());
+        if (!isValidCaptcha()) {
+            notiff_captcha();
+            return;
+        }
+
         if(email_signin.getText().equals("admin") && password_signin.getText().equals("admin") )
         {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -121,7 +160,7 @@ public class SignInController {
             alert.setContentText("Bienvenu Admin");
             alert.showAndWait();
 
-            notiff();
+            notiff_login();
 
             Parent root = FXMLLoader.load(getClass().getResource("/Back.fxml"));
             Scene scene;
@@ -135,7 +174,7 @@ public class SignInController {
         String email = email_signin.getText();
         String pass = password_signin.getText();
         sv.login(email,pass);
-        notiff();
+        notiff_login();
     }
 
 
@@ -234,6 +273,41 @@ public class SignInController {
         sendPassword();
     }
 
+
+    public Captcha generateCaptcha() {
+
+        Captcha.Builder builder = new Captcha.Builder(250, 150)
+                .addText()
+                .addBackground(new FlatColorBackgroundProducer(Color.PINK))
+                .addNoise()
+                .gimp(new FishEyeGimpyRenderer())
+                .addBorder();
+
+        Captcha captcha = builder.build();
+        System.out.println(captcha.getAnswer());
+        captchImg.setImage(SwingFXUtils.toFXImage(captcha.getImage(), null));
+        return captcha;
+    }
+
+    boolean isValidCaptcha(){
+
+        if (captcha != null) {
+            System.out.println(captcha.getAnswer());
+
+            if (captcha.getAnswer().equals(captchaInput.getText())) {
+
+                System.out.println("isValidCaptcha if");
+                captchaIsCorrect = true;
+                return true;
+            } else {
+                System.out.println("isValidCaptcha else");
+                captcha = generateCaptcha();
+                return false;
+            }
+        }
+        System.err.println("Captcha is not initialized");
+        return false;
+    }
 
 
 }

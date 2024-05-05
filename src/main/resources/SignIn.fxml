@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -13,58 +14,65 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SignInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SignInController">
    <children>
       <AnchorPane fx:id="login_form" prefHeight="500.0" prefWidth="394.0">
          <children>
-            <AnchorPane layoutX="-11.0" prefHeight="500.0" prefWidth="400.0" styleClass="login-bg">
+            <AnchorPane layoutX="-11.0" prefHeight="664.0" prefWidth="961.0" styleClass="login-bg">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="286.0" layoutX="59.0" layoutY="103.0" stroke="BLACK" strokeType="INSIDE" width="697.0" />
-                  <Label layoutX="59.0" layoutY="37.0" text="Travel_With_Me">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="271.0" layoutX="143.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" width="697.0" />
+                  <Label layoutX="143.0" layoutY="28.0" text="Travel_With_Me">
                      <font>
                         <Font name="System Bold Italic" size="45.0" />
                      </font>
                   </Label>
-                  <Label layoutX="111.0" layoutY="200.0" text="Email">
+                  <Label layoutX="195.0" layoutY="191.0" text="Email">
                      <font>
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <Label layoutX="111.0" layoutY="245.0" text="Password">
+                  <Label layoutX="195.0" layoutY="236.0" text="Password">
                      <font>
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <Hyperlink fx:id="create_acc" layoutX="271.0" layoutY="441.0" onAction="#goToSignUp" styleClass="hypertext-design" text="Create new account">
+                  <Hyperlink fx:id="create_acc" layoutX="684.0" layoutY="34.0" onAction="#goToSignUp" styleClass="hypertext-design" text="Create new account">
                      <font>
                         <Font name="Microsoft Sans Serif" size="24.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="mdp_oub" layoutX="262.0" layoutY="404.0" onAction="#sendPaswword_btn" prefHeight="37.0" prefWidth="262.0" styleClass="hypertext-design" text="Mot de passe oublié ?">
+                  <Hyperlink fx:id="mdp_oub" layoutX="137.0" layoutY="380.0" onAction="#sendPaswword_btn" prefHeight="37.0" prefWidth="262.0" styleClass="hypertext-design" text="Mot de passe oublié ?">
                      <font>
                         <Font name="Microsoft Sans Serif" size="24.0" />
                      </font>
                   </Hyperlink>
-                  <Label layoutX="423.0" layoutY="50.0" text="Login" textFill="#00000080">
+                  <Label layoutX="507.0" layoutY="41.0" text="Login" textFill="#00000080">
                      <font>
                         <Font name="System Bold Italic" size="28.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="email_signin" layoutX="275.0" layoutY="203.0" prefHeight="31.0" prefWidth="416.0" promptText="Enter Your Email ..." styleClass="textfield-design">
+                  <TextField fx:id="email_signin" layoutX="359.0" layoutY="194.0" prefHeight="31.0" prefWidth="416.0" promptText="Enter Your Email ..." styleClass="textfield-design">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="password_signin" layoutX="275.0" layoutY="250.0" prefHeight="31.0" prefWidth="416.0" promptText="Enter Your Password ..." styleClass="textfield-design">
+                  <PasswordField fx:id="password_signin" layoutX="359.0" layoutY="241.0" prefHeight="31.0" prefWidth="416.0" promptText="Enter Your Password ..." styleClass="textfield-design">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </PasswordField>
-                  <Button fx:id="login_btn" layoutX="508.0" layoutY="308.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="31.0" prefWidth="183.0" styleClass="button-design" text="Login">
+                  <Button fx:id="login_btn" layoutX="624.0" layoutY="530.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="31.0" prefWidth="183.0" styleClass="button-design" text="Login">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
+                  <ImageView fx:id="captchImg" fitHeight="208.0" fitWidth="429.0" layoutX="68.0" layoutY="435.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label layoutX="592.0" layoutY="429.0" text="write the captcha here">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="captchaInput" layoutX="591.0" layoutY="474.0" prefHeight="31.0" prefWidth="249.0" />
                </children>
             </AnchorPane>
          </children>
