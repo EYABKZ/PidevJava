@@ -139,8 +139,6 @@ public class AjouterPostControllers {
             alert.show();
         }
     }
-
-
     public void settxtTitle(String txtTitle) { this.txtTitle.setText(txtTitle);
     }
 

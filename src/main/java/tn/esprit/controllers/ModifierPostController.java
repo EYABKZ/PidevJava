@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import tn.esprit.entities.Post;
 import tn.esprit.services.servicePost;
@@ -37,6 +34,9 @@ public class ModifierPostController {
     private TextField txtId_Post;
     @FXML
     private TextField txtViews_Count;
+
+    @FXML
+    private Button modify_btn;
 
     public void setTxtTitle(String txtTitle) { this.txtTitle.setText(txtTitle);
     }
@@ -81,51 +81,18 @@ public class ModifierPostController {
 
             // Reload the view
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherP.fxml"));
-                Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost .fxml"));
+            Parent root = loader.load();
 
-            AfficherPostControllers afficherPostControllers = loader.getController();
-            List<Post> allPosts = sv.recuperer();
-
-            // Add all transports to the ListView
-            ObservableList<Post> items = FXCollections.observableArrayList(allPosts);
-            afficherPostControllers.AfficherList.setItems(items);
-
-            // Use a CellFactory to display the Transport_Model as the text of the list items
-            afficherPostControllers.AfficherList.setCellFactory(param -> new ListCell<Post>() {
-                @Override
-                protected void updateItem(Post item, boolean empty) {
-                    super.updateItem(item, empty);
-
-                    if (empty || item == null || item.getTitle() == null) {
-                        setText(null);
-                    } else {
-                        setText(item.getTitle());
-                    }
-                }
-            });
-
-            // Set an on-click listener for the ListView items
-            afficherPostControllers.AfficherList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                // Fetch the details of the selected transport
-                Post selectedPost= newValue;
-
-                // Display the details of the selected transport
-                afficherPostControllers.settxtTitle(selectedPost.getTitle());
-                afficherPostControllers.settxtAuthor(selectedPost.getAuthor());
-                afficherPostControllers.setTxtCreated_at(selectedPost.getCreated_at());
-                afficherPostControllers.setTxtViews_Count(selectedPost.getViews_count());
-                afficherPostControllers.setTxtId_Post(Integer.parseInt(String.valueOf(selectedPost.getId_Post())));
-            });
-
-            // Get the current stage from the event source
-            Stage stage = (Stage) txtId_Post.getScene().getWindow();
-
-            // Create a new scene with the root and set it to the stage
+            // Créer une nouvelle scène avec la vue chargée
             Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir du bouton ou du nœud parent le plus proche
+            Stage stage = (Stage) modify_btn.getScene().getWindow();
+
+            // Changer la scène pour afficher la vue "AjouterPost.fxml"
             stage.setScene(scene);
             stage.show();
-
         } catch (IOException e) {
             // Handle IO exception
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -161,30 +128,27 @@ public class ModifierPostController {
                 alert.setContentText("Post supprimé avec succès");
                 alert.show();
 
-                // Reload the view
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterPost.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost .fxml"));
+                Parent root = loader.load();
 
-                try {
-                    Parent root = loader.load();
+                // Créer une nouvelle scène avec la vue chargée
+                Scene scene = new Scene(root);
 
-                    AjouterPostControllers a = loader.getController();
-                    a.setTxtCreated_at("");
-                    a.settxtTitle("");
-                    a.settxtAuthor("");
-                    a.setTxtViews_count("");
+                // Obtenir la scène actuelle à partir du bouton ou du nœud parent le plus proche
+                Stage stage = (Stage) modify_btn.getScene().getWindow();
 
-                    txtTitle.getScene().setRoot(root);
+                // Changer la scène pour afficher la vue "AjouterPost.fxml"
+                stage.setScene(scene);
+                stage.show();
 
-                } catch (IOException e) {
-                    // Handle IO exception
-                    e.printStackTrace();
-                }
             }catch (SQLException e) {
                 // Handle SQL exception
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setContentText(e.getMessage());
                 alert.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }

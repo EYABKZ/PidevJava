@@ -3,6 +3,7 @@ package tn.esprit.services;
 
 import tn.esprit.entities.Comment;
 import tn.esprit.entities.Post;
+import tn.esprit.entities.React;
 import tn.esprit.util.MyDataBase;
 
 import java.sql.*;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class servicePost implements IService<Post> {
 
-    private Connection connection;
+    private static Connection connection;
 
     public  servicePost(){
         connection = MyDataBase.getInstance().getConnection();
@@ -39,13 +40,13 @@ public class servicePost implements IService<Post> {
     @Override
     public void modifier(Post post) throws SQLException {
 
-        String sql = "update post set title = ?, created_at= ?, author= ?,views_count=? where id_Post = ?";
+        String sql = "update post set title = ?, created_at= ?, author= ?,views_count=? where id_post = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, post.getTitle());
         preparedStatement.setString(2, post.getCreated_at());
         preparedStatement.setString(3, post.getAuthor());
-        preparedStatement.setInt(4,post.getId_Post());
-        preparedStatement.setInt(5, post.getViews_count());
+        preparedStatement.setInt(4, post.getViews_count());
+        preparedStatement.setInt(5,post.getId_Post());
         preparedStatement.executeUpdate();
         System.out.println("done" + post.getAuthor().toString());
 
@@ -93,8 +94,8 @@ public class servicePost implements IService<Post> {
     }
     @Override
     public Post recupererPost(int id) throws SQLException {
-        Post p = null;
-        String sql = "SELECT * FROM post WHERE id = ?";
+        Post p = new Post();
+        String sql = "SELECT * FROM post WHERE id_post = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, id);
             try (ResultSet rs = preparedStatement.executeQuery()) {
@@ -114,4 +115,30 @@ public class servicePost implements IService<Post> {
     public List<Post> recupererComPost(int id_post) throws SQLException{
        return null ;
     }
+    public React recupererReact(int react_id) throws SQLException {return null;
+    };
+    public static List<Post> search(String text) throws SQLException {
+        String query = "SELECT * FROM post WHERE title LIKE ? OR author LIKE ?";
+        List<Post> searchResults = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "%" + text + "%");
+            preparedStatement.setString(2, "%" + text + "%");
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Post post = new Post();
+                    post.setId_Post(resultSet.getInt("Id_Post"));
+                    post.setTitle(resultSet.getString("title"));
+                    post.setAuthor(resultSet.getString("author"));
+                    post.setCreated_at(resultSet.getString("created_at"));
+                    post.setViews_count(resultSet.getInt("Views_count"));
+
+                    searchResults.add(post);
+                }
+            }
+        }
+        return searchResults;
+    }
+
+    public void modifierReact(React react) throws SQLException{};
+    public List<Comment> recupererReply(int id_parent){return null;}
 }

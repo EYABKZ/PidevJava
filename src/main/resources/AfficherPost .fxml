@@ -12,94 +12,43 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="modifierButton" opacity="0.84" prefHeight="791.0" prefWidth="1214.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherPostControllers">
+<AnchorPane fx:id="modifierButton" opacity="0.84" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherPostControllers">
    <children>
-      <Label layoutX="514.0" layoutY="252.0">
+   
+        <ScrollPane fx:id="scroll" layoutX="111.0" layoutY="140.0" prefHeight="550.0">
+      <content>
+      
+           <GridPane fx:id="postContainer" layoutX="20" layoutY="20" />
+      </content>
+        </ScrollPane>
+      <Label layoutX="111.0" layoutY="35.0" prefHeight="36.0" prefWidth="256.0" text="Liste des publications">
          <font>
-            <Font size="20.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="512.0" layoutY="318.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <VBox layoutX="196.0" layoutY="62.0" prefHeight="95.0" prefWidth="436.0">
-         <children>
-            <HBox prefHeight="46.0" prefWidth="421.0">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@profile.png" />
-                     </image>
-                  </ImageView>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="93.0" prefWidth="402.0">
-                     <children>
-                        <TextField fx:id="txtAuthor" alignment="TOP_CENTER" prefHeight="5.0" prefWidth="113.0" />
-                        <TextField fx:id="txtCreated_at" prefHeight="25.0" prefWidth="72.0" />
-                        <HBox prefHeight="18.0" prefWidth="115.0">
-                           <children>
-                              <ImageView fitHeight="16.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@world.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="S_RESIZE" />
-                                 </cursor>
-                              </ImageView>
-                              <Label text="public" />
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="36.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@ponit.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="58.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <Pane cacheHint="QUALITY" layoutX="202.0" layoutY="133.0" prefHeight="200.0" prefWidth="379.0">
-         <children>
-            <ImageView fitHeight="133.0" fitWidth="320.0" layoutX="45.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images.jpg" />
-               </image>
-            </ImageView>
-            <TextField fx:id="txtTitle" layoutX="1.0" layoutY="2.0" prefHeight="25.0" prefWidth="372.0" />
-         </children>
-         <effect>
-            <DisplacementMap>
-               <mapData>
-                  <FloatMap />
-               </mapData>
-            </DisplacementMap>
-         </effect>
-      </Pane>
-      <VBox layoutX="191.0" layoutY="311.0" prefHeight="75.0" prefWidth="420.0">
-         <children>
-            <TextField text="write your comment here ">
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor></TextField>
-            <TextField fx:id="txtContent" />
-         </children>
-      </VBox>
-      <Label layoutX="375.0" layoutY="14.0" prefHeight="16.0" prefWidth="147.0" text="Posts" textFill="#c63131">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <Button layoutX="671.0" layoutY="197.0" mnemonicParsing="false" text="Add Post" />
-
    </children>
-   <effect>
-      <DropShadow color="#195261" height="32.86" offsetX="10.0" radius="15.93" spread="0.15" width="32.86" />
-   </effect>
-   <cursor>
-      <Cursor fx:constant="S_RESIZE" />
-   </cursor>
+     <children>
+     <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="593.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+               <Image url="@profile.png" />
+          </image>
+     </ImageView>
+     <Label layoutX="522.0" layoutY="328.0">
+          <font>
+               <Font size="20.0" />
+          </font>
+     </Label>
+     <Label layoutX="524.0" layoutY="262.0">
+          <font>
+               <Font size="20.0" />
+          </font>
+     </Label>
+         <Button fx:id="AjouterButton" layoutX="591.0" layoutY="98.0" mnemonicParsing="false" onAction="#ajouterPost" text="Add Post" />
+         <HBox layoutX="631.0" layoutY="63.0" prefHeight="46.0" prefWidth="355.0">
+         <children>
+            <TextField fx:id="txtTitle" prefHeight="22.0" prefWidth="149.0" />
+         </children></HBox>
+         <TextField fx:id="searchTextField" layoutX="869.0" layoutY="26.0" prefHeight="25.0" prefWidth="75.0" text="seach" />
+     <TextField fx:id="txtAuthor" alignment="TOP_LEFT" layoutX="629.0" layoutY="33.0" prefHeight="25.0" prefWidth="102.0" />
+</children>
 </AnchorPane>

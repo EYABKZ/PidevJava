@@ -3,6 +3,7 @@ package tn.esprit.services;
 
 import tn.esprit.entities.Comment;
 import tn.esprit.entities.Post;
+import tn.esprit.entities.React;
 import tn.esprit.util.MyDataBase;
 
 import java.sql.*;
@@ -19,12 +20,24 @@ public class serviceComment implements IService<Comment> {
     @Override
     public int ajouter(Comment comment) throws SQLException {
 
-        String sql = "INSERT INTO comment (Replies_Count,author_c,Content,post_id,signaler) VALUES (?, ?, ?,?,0)";
+        String reactSql = "INSERT INTO react (likes,dislike,userlike,userdislike) VALUES (0,0,null,null)";
+        PreparedStatement state = connection.prepareStatement(reactSql, Statement.RETURN_GENERATED_KEYS);
+        state.executeUpdate();
+        // Retrieve the auto-generated ID
+        ResultSet generatedReactKey = state.getGeneratedKeys();
+        int reactId = -1; // Default value if no key is generated
+        if (generatedReactKey.next()) {
+            reactId = generatedReactKey.getInt(1); // Assuming the ID is in the first column
+        }
+
+
+        String sql = "INSERT INTO comment (Replies_Count,author_c,Content,post_id,reacts_id,signaler) VALUES (?, ?, ?,?,?,0)";
         PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         statement.setInt(1, comment.getReplies_count());
         statement.setString(2, comment.getAuthorC());
         statement.setString(3, comment.getContent());
         statement.setInt(4, comment.getPost_id().getId_Post());
+        statement.setInt(5, reactId);
         statement.executeUpdate();
 
         // Retrieve the auto-generated ID
@@ -107,10 +120,71 @@ public class serviceComment implements IService<Comment> {
                 c.setReplies_count(rs.getInt("Replies_Count"));
                 c.setContent(rs.getString("Content"));
                 c.setAuthorC(rs.getString("author_c"));
+                React r=new React();
+                r=recupererReact(rs.getInt("reacts_id"));
+                c.setReacts_id(r);
                 comments.add(c);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return comments;
-}}
+}
+    @Override
+    public React recupererReact(int react_id) throws SQLException{
+        String sql = "SELECT * FROM react WHERE id = ?";
+        React r = new React();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, react_id);
+            ResultSet rs = preparedStatement.executeQuery(); // Remove sql from executeQuery() call
+            while (rs.next()){
+                r.setlikes(rs.getInt("likes"));
+                r.setDislike(rs.getInt("dislike"));
+                r.setUser_like(rs.getString("userlike"));
+                r.setUser_dislike(rs.getString("userdislike"));
+                r.setId(react_id);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return r;
+    }
+    @Override
+    public void modifierReact(React react) throws SQLException {
+
+        String sql = "update react set likes = ?, dislike = ?, userlike= ?, userdislike = ? where id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, react.getlikes());
+        preparedStatement.setInt(2, react.getDislike());
+        preparedStatement.setString(3, react.getUser_like());
+        preparedStatement.setString(4,react.getUser_dislike());
+        preparedStatement.setInt(5,react.getId());
+        preparedStatement.executeUpdate();
+
+    }
+    @Override
+    public List<Comment> recupererReply(int id_parent) {
+        List<Comment> comments = new ArrayList<>();
+        String sql = "SELECT * FROM comment WHERE parent_comment_id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id_parent);
+            ResultSet rs = preparedStatement.executeQuery(); // Remove sql from executeQuery() call
+            while (rs.next()){
+                Comment c = new Comment();
+                c.setId_Comment(rs.getInt("Id_Comment"));
+                c.setReplies_count(rs.getInt("Replies_Count"));
+                c.setContent(rs.getString("Content"));
+                c.setAuthorC(rs.getString("author_c"));
+                React r=new React();
+                r=recupererReact(rs.getInt("reacts_id"));
+                c.setReacts_id(r);
+                comments.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return comments;
+    }
+
+}
