@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="1248.0" style="-fx-background-color: #2F2B43; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.To">
+   <children>
+      <AnchorPane prefHeight="732.0" prefWidth="401.0" style="-fx-background-color: #393351;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutY="212.0" prefHeight="517.0" prefWidth="401.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="212.0">
+               <children>
+                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#ToAddAction" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Transport" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/C:/Users/yassi/OneDrive/Images/Saved%20Pictures/car_icon.jpg" />
+                           </image></ImageView>
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="-10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#ToAddActionC" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Reservation" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/C:/Users/yassi/OneDrive/Images/Saved%20Pictures/calendar_icon.jpg" />
+                           </image></ImageView>
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="-10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="401.0" styleClass="button1" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="53.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="-10.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Pane layoutY="96.0" prefHeight="81.0" prefWidth="401.0" style="-fx-background-color: #Fa2C56; -fx-background-radius: 5;">
+         <children>
+            <Label layoutX="33.0" layoutY="14.0" prefHeight="53.0" prefWidth="245.0" text="TravelWithMe" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="401.0" prefHeight="732.0" prefWidth="847.0">
+         <children>
+            <Pane layoutX="-41.0" layoutY="-197.0" prefHeight="357.0" prefWidth="611.0" rotate="36.9" style="-fx-background-color: #Fa2C56; -fx-background-radius: 70;" />
+            <Button layoutX="90.0" layoutY="329.0" mnemonicParsing="false" onAction="#ToListAction" prefHeight="230.0" prefWidth="245.0" styleClass="button2" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Button" />
+            <Circle fill="WHITE" layoutX="213.0" layoutY="444.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="81.0" fitWidth="72.0" layoutX="177.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/yassi/OneDrive/Images/Saved%20Pictures/car_icon.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="155.0" layoutY="518.0" text="List Transport" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="493.0" layoutY="340.0" mnemonicParsing="false" onAction="#ToListActionC" prefHeight="209.0" prefWidth="245.0" styleClass="button2" stylesheets="@../java/tn/esprit/css/fullpackstyling.css" text="Button" />
+            <Circle fill="WHITE" layoutX="616.0" layoutY="445.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="69.0" fitWidth="83.0" layoutX="581.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/yassi/OneDrive/Images/Saved%20Pictures/calendar_icon.jpg" />
+               </image></ImageView>
+            <Label layoutX="549.0" layoutY="510.0" text="List Reservation" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

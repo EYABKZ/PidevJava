@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="685.0" prefWidth="1133.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.HomeController">
+   <children>
+      <Button layoutX="425.0" layoutY="210.0" mnemonicParsing="false" onAction="#goToTransport" prefHeight="40.0" prefWidth="347.0" text="Transport" />
+      <Label layoutX="541.0" layoutY="102.0" text="Welcome Home !" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="724.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ChatBotController">
+   <children>
+      <TextArea fx:id="chatArea" editable="false" layoutX="14.0" layoutY="83.0" prefHeight="559.0" prefWidth="570.0" />
+      <TextField fx:id="msgField" layoutX="13.0" layoutY="658.0" prefHeight="42.0" prefWidth="450.0" promptText="Type a message here..." />
+      <Button layoutX="472.0" layoutY="658.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="42.0" prefWidth="113.0" text="Send" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="72.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <Circle fill="#28ff1f" layoutX="232.0" layoutY="36.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="94.0" layoutY="13.0" text="ChatBOT" textFill="WHITE">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="58.0" fitWidth="60.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/yassi/IdeaProjects/projet2/src/main/Img/chatbot.png" />
+         </image></ImageView>
+   </children>
+</AnchorPane>
