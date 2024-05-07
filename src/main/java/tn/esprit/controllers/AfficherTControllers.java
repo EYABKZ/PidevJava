@@ -4,7 +4,16 @@ package tn.esprit.controllers;
 import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.chart.BarChart;
@@ -21,6 +30,9 @@ import javafx.scene.image.ImageView;
 
 import java.awt.*;
 
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.sql.*;
 import java.time.LocalDate;
 
 import javafx.fxml.FXMLLoader;
@@ -51,10 +63,6 @@ import javafx.scene.Node;
 
 import tn.esprit.entities.Moy_Transport;
 import tn.esprit.services.ServiceMoy_Transport;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.sql.SQLException;
 
 import java.util.DoubleSummaryStatistics;
 
@@ -62,6 +70,7 @@ import java.util.DoubleSummaryStatistics;
 public class AfficherTControllers {
 
     public ListView <Moy_Transport> AfficherList;
+
     @FXML
     private TextField txtId;
 
@@ -283,33 +292,6 @@ public class AfficherTControllers {
         }
     }
 
-
-
-
-
-    @FXML
-    private void searchVoitures() {
-        String searchString = searchTextField.getText().toLowerCase();
-
-        tableviewVoiture.getItems().clear(); // Clear previous items
-
-        try {
-            if (searchString.isEmpty()) {
-                // If search text is empty, reload all voitures
-                loadVoitures();
-            } else {
-                List<Moy_Transport> filteredVoitures = voitureService.recuperer().stream()
-                        .filter(voiture -> voiture.getTransport_Model().toLowerCase().contains(searchString))
-                        .collect(Collectors.toList());
-
-                tableviewVoiture.getItems().addAll(filteredVoitures);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Handle the SQLException
-            // Optionally, display an error message to the user
-        }
-    }
-
     @FXML
     private void handleSortButtonClick() {
         // Call a method to sort the table
@@ -425,10 +407,10 @@ public class AfficherTControllers {
     private final MapPoint guarage = new MapPoint(36.9002385, 10.186814);
 
     @FXML
-    private ScrollPane mapContainer;
+    private VBox address;
 
     @FXML
-    private VBox address;
+    private ImageView qrCodeImageView = new ImageView();
 
 
     private MapView createMapView() {
@@ -457,5 +439,75 @@ public class AfficherTControllers {
             marker.setTranslateY(point.getY());
         }
     }
+
+    @FXML
+    private void generateQRCode(ActionEvent event) {
+        Moy_Transport selectedVoiture = tableviewVoiture.getSelectionModel().getSelectedItem();
+        if (selectedVoiture != null) {
+            String message = String.format("Model: %s\nPrix: %s\nDescription: %s\nDisponibility: %s\nPicture: %s",
+                    selectedVoiture.getTransport_Model(), selectedVoiture.getTransport_Price(), selectedVoiture.getTransport_Description(),
+                    selectedVoiture.getDisponibility(), selectedVoiture.getTransport_Picture());
+
+            try {
+                BufferedImage qrCodeImage = generateQRCode(message);
+                Image qrCodeFXImage = SwingFXUtils.toFXImage(qrCodeImage, null);
+                qrCodeImageView.setImage(qrCodeFXImage);
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("No car selected.");
+        }
+    }
+
+    @FXML
+    private BufferedImage generateQRCode(String message) throws WriterException {
+        int width = 300;
+        int height = 300;
+        Map<EncodeHintType, Object> hints = new HashMap<>();
+        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+        BitMatrix bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, width, height, hints);
+        BufferedImage qrCodeImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                qrCodeImage.setRGB(x, y, bitMatrix.get(x, y) ? 0x000000 : 0xFFFFFF);
+            }
+        }
+        return qrCodeImage;
+    }
+
+    private void loadUserAndGenerateQR(String marque) {
+        String url = "jdbc:mysql://localhost:3306/travelwithme";
+        String username = "root";
+        String password = "";
+        String query = "SELECT Transport_Model, Transport_Price, Transport_Description, Disponibility, Transport_Picture FROM Moy_Transport WHERE Transport_Model = ?";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+             statement.setString(1, marque);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    String Transport_Model = resultSet.getString("Transport_Model");
+                    String Transport_Price = resultSet.getString("Transport_Price");
+                    String Transport_Description = resultSet.getString("Transport_Description");
+                    String Disponibility = resultSet.getString("Disponibility");
+                    String Transport_Picture = resultSet.getString("Transport_Picture");
+
+                    String userInfo = String.format("Model: %s\nPrix: %s\nDescription: %s\nDisponibility: %s\nPicture: %s",
+                            Transport_Model, Transport_Price, Transport_Description, Disponibility, Transport_Picture);
+
+                    generateQRCode(userInfo);
+                } else {
+                    System.out.println("Transport not found");
+                }
+            }
+        } catch (SQLException | WriterException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
