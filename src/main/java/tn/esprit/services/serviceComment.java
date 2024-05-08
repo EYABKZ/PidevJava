@@ -31,14 +31,18 @@ public class serviceComment implements IService<Comment> {
         }
 
 
-        String sql = "INSERT INTO comment (Replies_Count,author_c,Content,post_id,reacts_id,signaler) VALUES (?, ?, ?,?,?,0)";
+        String sql = "INSERT INTO comment (Replies_Count,author_c,Content,post_id,reacts_id,signaler,parent_comment_id) VALUES (?, ?, ?,?,?,0,?)";
         PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         statement.setInt(1, comment.getReplies_count());
         statement.setString(2, comment.getAuthorC());
         statement.setString(3, comment.getContent());
         statement.setInt(4, comment.getPost_id().getId_Post());
         statement.setInt(5, reactId);
-        statement.executeUpdate();
+        if (comment.getParent_comment_id() != null) {
+            statement.setInt(6, comment.getParent_comment_id().getId_Comment());
+        } else {
+            statement.setNull(6, java.sql.Types.INTEGER);
+        }        statement.executeUpdate();
 
         // Retrieve the auto-generated ID
         ResultSet generatedKeys = statement.getGeneratedKeys();

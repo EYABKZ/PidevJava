@@ -28,7 +28,14 @@ import tn.esprit.entities.React;
 import tn.esprit.services.serviceComment;
 import tn.esprit.services.servicePost;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -36,6 +43,9 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class AfficherPostControllers {
+    private static final String CLIENT_ID = "FREE_TRIAL_ACCOUNT";
+    private static final String CLIENT_SECRET = "PUBLIC_SECRET";
+    private static final String ENDPOINT = "http://api.whatsmate.net/v1/translation/translate";
 
 
     servicePost sv = new servicePost();
@@ -204,6 +214,24 @@ public class AfficherPostControllers {
 // Set the alignment of the graphic (optional)
             authorLabel.setContentDisplay(ContentDisplay.LEFT);
             Label contentLabel = new Label(post.getTitle());
+            Button translateButton = new Button("translate");
+            translateButton.setOnAction(event -> {
+                // Create a dialog box for entering the reply
+                try {
+                    String translatedText = translate("en","fr",post.getTitle());
+                    Label traslatedLabel = new Label();
+                    traslatedLabel.setText(translatedText);
+                    traslatedLabel.setAlignment(Pos.CENTER);
+                    VBox translatedLayout = new VBox(traslatedLabel);
+                    Scene translatedScene = new Scene(translatedLayout, 300, 30);
+                    Stage translatedStage = new Stage();
+                    translatedStage.setScene(translatedScene);
+                    translatedStage.setTitle("traduction");
+                    translatedStage.show();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
             Image image = new Image(getClass().getResource("/images.jpg").toExternalForm());
 
             // Set up ImageView
@@ -245,6 +273,7 @@ public class AfficherPostControllers {
                 iconDisLikeView.setFitHeight(10); // Adjust the height as needed
                 Button likeButton = new Button();
                 Button dislikeButton = new Button();
+                Button replyButton = new Button("répondre");
                 likeButton.setGraphic(iconLikeView);
                 dislikeButton.setGraphic(iconDisLikeView);
                 likeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -269,11 +298,41 @@ public class AfficherPostControllers {
 
                     }
                 });
+
+                    replyButton.setOnAction(event -> {
+                        // Create a dialog box for entering the reply
+                        TextField replyField = new TextField();
+                        replyField.setPromptText("Enter your reply");
+                        replyField.setOnAction(replyEvent -> {
+                            // Execute the action when Enter is pressed
+                            String reply = replyField.getText();
+                            System.out.println("Reply: " + reply);
+                            // Add your action here, such as sending the reply
+                            // For demonstration, we're just printing the reply to the console
+                            Stage stage = (Stage) replyField.getScene().getWindow();
+                            // Call your function here with the reply as an argument
+                            try {
+                                closeDialog(comment,post.getId_Post(),replyField);
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        });
+
+                        VBox dialogLayout = new VBox(replyField);
+                        Scene dialogScene = new Scene(dialogLayout, 300, 50);
+                        Stage dialogStage = new Stage();
+                        dialogStage.setScene(dialogScene);
+                        dialogStage.setTitle("Reply");
+                        dialogStage.show();
+                    });
+
                 //  Image iconReply = new Image(getClass().getResource("/reply.png").toExternalForm());
 
 
                 HBox reactBox = new HBox(5);
-                reactBox.getChildren().addAll(likeButton, dislikeButton);
+                reactBox.getChildren().addAll(likeButton, dislikeButton,replyButton);
 
                 //Reply
                 List<Comment> replies = commentService.recupererReply(comment.getId_Comment());
@@ -327,7 +386,7 @@ public class AfficherPostControllers {
             });
             boxPerComment.getChildren().addAll(newComment, ajoutComment);
             commentBox.getChildren().addAll(boxPerComment);
-            postBox.getChildren().addAll(container, profileImageView, contentLabel, commentBox);
+            postBox.getChildren().addAll(container, profileImageView, contentLabel,translateButton, commentBox);
 
             // Add postBox to GridPane at specified row and column
             postContainer.add(postBox, column, row);
@@ -587,5 +646,72 @@ public class AfficherPostControllers {
         // Show filtered posts
         showPosts(filteredPosts);
     }
+    private void closeDialog(Comment comment,Integer post_id,TextField replyField) throws SQLException, IOException {
+        Post p = sv.recupererPost(post_id);
+        Comment c = new Comment(0, replyField.getText(), comment.getAuthorC(), p, comment, null);
+        int generatedId = sv_comment.ajouter(c);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Stage stage1 = (Stage) replyField.getScene().getWindow();
+        Stage stage = (Stage) AjouterButton.getScene().getWindow();
 
+        try {
+            stage1.close();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost .fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène avec la vue chargée
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir du bouton ou du nœud parent le plus proche
+
+            // Changer la scène pour afficher la vue "AjouterPost.fxml"
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+    public String  translate(String fromLang, String toLang, String text) throws Exception {
+        // TODO: Should have used a 3rd party library to make a JSON string from an object
+        String jsonPayload = new StringBuilder()
+                .append("{")
+                .append("\"fromLang\":\"")
+                .append(fromLang)
+                .append("\",")
+                .append("\"toLang\":\"")
+                .append(toLang)
+                .append("\",")
+                .append("\"text\":\"")
+                .append(text)
+                .append("\"")
+                .append("}")
+                .toString();
+
+        URL url = new URL(ENDPOINT);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setDoOutput(true);
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("X-WM-CLIENT-ID", CLIENT_ID);
+        conn.setRequestProperty("X-WM-CLIENT-SECRET", CLIENT_SECRET);
+        conn.setRequestProperty("Content-Type", "application/json");
+
+        OutputStream os = conn.getOutputStream();
+        os.write(jsonPayload.getBytes());
+        os.flush();
+        os.close();
+
+        int statusCode = conn.getResponseCode();
+        System.out.println("Status Code: " + statusCode);
+        BufferedReader br = new BufferedReader(new InputStreamReader(
+                (statusCode == 200) ? conn.getInputStream() : conn.getErrorStream()
+        ));
+        StringBuilder result = new StringBuilder();
+        String output;
+        while ((output = br.readLine()) != null) {
+            result.append(output).append("\n"); // Append each line to the result with a newline character
+        }
+        conn.disconnect();
+        return result.toString();
+    }
+
+}
