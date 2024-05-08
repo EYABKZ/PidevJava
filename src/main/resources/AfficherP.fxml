@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="576.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherPControllers">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="559.0" layoutX="10.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393351" height="559.0" layoutX="10.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="559.0" layoutX="381.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="431.0" />
       <Label layoutX="411.0" layoutY="130.0" text="Name" textFill="#00000080">
          <font>

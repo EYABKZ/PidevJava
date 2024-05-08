@@ -14,20 +14,20 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterPersonneController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="359.0" layoutX="87.0" layoutY="144.0" stroke="BLACK" strokeType="INSIDE" width="830.0" />
-      <Label layoutX="195.0" layoutY="230.0" text="Name">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393351" height="359.0" layoutX="87.0" layoutY="144.0" stroke="BLACK" strokeType="INSIDE" width="830.0" />
+      <Label layoutX="195.0" layoutY="230.0" text="Name" textFill="WHITE">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
       <TextField fx:id="txtLastname" layoutX="344.0" layoutY="235.0" prefHeight="31.0" prefWidth="439.0" promptText="Enter Your Name.." />
       <Button layoutX="583.0" layoutY="404.0" mnemonicParsing="false" onAction="#ajouterAction" prefHeight="31.0" prefWidth="200.0" text="Sign Up" />
-      <Label layoutX="195.0" layoutY="286.0" text="Email">
+      <Label layoutX="195.0" layoutY="286.0" text="Email" textFill="WHITE">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <Label layoutX="195.0" layoutY="339.0" text="Password">
+      <Label layoutX="195.0" layoutY="339.0" text="Password" textFill="WHITE">
          <font>
             <Font size="27.0" />
          </font>

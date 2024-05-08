@@ -1,8 +1,7 @@
 package tn.esprit.services;
 
 
-import tn.esprit.entities.Calendar;
-import tn.esprit.entities.Moy_Transport;
+import tn.esprit.entities.*;
 import tn.esprit.util.MyDataBase;
 
 import java.sql.*;
@@ -93,6 +92,31 @@ public class ServiceCalendar implements IService<Calendar> {
             calendars.add(t);
         }
         return calendars;
+    }
+
+    @Override
+    public List<Calendar> recupererComPost(int id_post) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Post recupererPost(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public React recupererReact(int react_id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void modifierReact(React react) throws SQLException {
+
+    }
+
+    @Override
+    public List<Comment> recupererReply(int id_parent) {
+        return null;
     }
 
     public List<Moy_Transport> recupererTousLesTransports() throws SQLException {

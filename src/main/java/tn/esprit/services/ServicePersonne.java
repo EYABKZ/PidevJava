@@ -6,7 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import tn.esprit.controllers.AfficherPControllers;
+import tn.esprit.entities.Comment;
 import tn.esprit.entities.Personne;
+import tn.esprit.entities.Post;
+import tn.esprit.entities.React;
 import tn.esprit.util.MyDataBase;
 
 import java.io.IOException;
@@ -83,6 +86,31 @@ public class ServicePersonne implements IService<Personne> {
             personnes.add(p);
         }
         return personnes;
+    }
+
+    @Override
+    public List<Personne> recupererComPost(int id_post) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Post recupererPost(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public React recupererReact(int react_id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void modifierReact(React react) throws SQLException {
+
+    }
+
+    @Override
+    public List<Comment> recupererReply(int id_parent) {
+        return null;
     }
 
 

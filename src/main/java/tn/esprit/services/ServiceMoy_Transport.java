@@ -1,7 +1,10 @@
 package tn.esprit.services;
 
 
+import tn.esprit.entities.Comment;
 import tn.esprit.entities.Moy_Transport;
+import tn.esprit.entities.Post;
+import tn.esprit.entities.React;
 import tn.esprit.util.MyDataBase;
 
 import java.sql.*;
@@ -77,5 +80,30 @@ public class ServiceMoy_Transport implements IService<Moy_Transport> {
             moy_transports.add(t);
         }
         return moy_transports;
+    }
+
+    @Override
+    public List<Moy_Transport> recupererComPost(int id_post) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Post recupererPost(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public React recupererReact(int react_id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void modifierReact(React react) throws SQLException {
+
+    }
+
+    @Override
+    public List<Comment> recupererReply(int id_parent) {
+        return null;
     }
 }

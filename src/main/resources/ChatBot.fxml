@@ -14,7 +14,7 @@
       <TextArea fx:id="chatArea" editable="false" layoutX="14.0" layoutY="83.0" prefHeight="559.0" prefWidth="570.0" />
       <TextField fx:id="msgField" layoutX="13.0" layoutY="658.0" prefHeight="42.0" prefWidth="450.0" promptText="Type a message here..." />
       <Button layoutX="472.0" layoutY="658.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="42.0" prefWidth="113.0" text="Send" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="72.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393351" height="72.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
       <Circle fill="#28ff1f" layoutX="232.0" layoutY="36.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
       <Label layoutX="94.0" layoutY="13.0" text="ChatBOT" textFill="WHITE">
          <font>
