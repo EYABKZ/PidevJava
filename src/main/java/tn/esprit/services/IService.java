@@ -1,28 +1,34 @@
 package tn.esprit.services;
 
-import tn.esprit.entities.Comment;
-import tn.esprit.entities.Post;
-import tn.esprit.entities.React;
 
-import java.sql.SQLException;
+
+import tn.esprit.entities.Accomodation;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.sql.SQLException;
 
-public interface IService <T> {
+public interface IService <T>{
+    void ajouter (T t) throws SQLException;
+    void supprimer (int id) throws SQLException;
+    void modifier (T t) throws SQLException;
+    //List<Accomodation> lister () throws SQLException;
+    T getById(int id) throws SQLException;
+    ArrayList<T> lister() throws SQLException ;
 
-    int ajouter(T t) throws SQLException;
+ //   void ajouter_booking (T t) throws SQLException;
+   // void supprimer_booking (int id) throws SQLException;
+    //void modifier_booking (T t) throws SQLException;
+    //List lister_booking () throws SQLException;
 
-    void modifier(T t) throws SQLException;
+/*
+    public interface IService<T>{
+        void ajouter(T t);
 
-    void supprimer(int id) throws SQLException;
+        void modifier(T t);
+        void supprimer(int t);
 
-    List<T> recuperer() throws SQLException;
 
-    List<T> recupererComPost(int id_post) throws SQLException;
+    }*/
 
-    Post recupererPost(int id) throws SQLException;
-
-    React recupererReact(int react_id) throws SQLException;
-
-    public void modifierReact(React react) throws SQLException;
-    public List<Comment> recupererReply(int id_parent);
 }

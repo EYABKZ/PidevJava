@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.UpdateAccomodation">
+   <children>
+      <AnchorPane layoutX="22.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TextField fx:id="TFDescriptionA" layoutX="135.0" layoutY="227.0" prefHeight="73.0" prefWidth="174.0" promptText="Tapez Votre Description" />
+            <TextField fx:id="TFLieuA" layoutX="144.0" layoutY="171.0" promptText="Tapez Votre Lieu" />
+            <TextField fx:id="TFIDA" layoutX="144.0" layoutY="98.0" promptText="Tapez L'ID" />
+            <Label layoutX="59.0" layoutY="253.0" text="Descrption" />
+            <Label layoutX="71.0" layoutY="175.0" text="Lieu" />
+            <Label layoutX="76.0" layoutY="102.0" text="ID" />
+            <Button layoutX="380.0" layoutY="123.0" mnemonicParsing="false" onAction="#update" prefHeight="73.0" prefWidth="134.0" text="Update" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="retour" layoutX="398.0" layoutY="258.0" mnemonicParsing="false" onAction="#actionretour" prefHeight="25.0" prefWidth="97.0" text="Retour" />
+            <Text layoutX="175.0" layoutY="-9.0" stroke="#77ff00" strokeType="OUTSIDE" strokeWidth="2.0" text="UPDATE ACCOMODATION" textAlignment="CENTER" textOrigin="TOP" wrappingWidth="304.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

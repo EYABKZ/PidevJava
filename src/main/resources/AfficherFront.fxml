@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AfficherFront">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1170.0">
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <center>
+                  <VBox prefHeight="501.0" prefWidth="815.0">
+                     <children>
+                        <ScrollPane prefHeight="540.0" prefWidth="582.0" BorderPane.alignment="CENTER">
+                           <content>
+                              <HBox fx:id="cartev" prefHeight="505.0" prefWidth="582.0" />
+                           </content>
+                           <BorderPane.margin>
+                              <Insets bottom="200.0" />
+                           </BorderPane.margin>
+                        </ScrollPane>
+                        <HBox alignment="CENTER" spacing="10" />
+                        <Button fx:id="btn1" alignment="CENTER" mnemonicParsing="false" onAction="#add" prefHeight="59.0" prefWidth="71.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="ADD" textFill="#fcfcfc" />
+                     </children>
+                  </VBox>
+               </center>
+            </BorderPane>
+         </center>
+         <top>
+            <HBox prefHeight="44.0" prefWidth="775.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="49.0" prefWidth="229.0" text="Our Accomodation" textFill="RED">
+                     <font>
+                        <Font name="Edwardian Script ITC" size="35.0" />
+                     </font>
+                  </Label>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <Label alignment="CENTER" prefHeight="51.0" prefWidth="357.0" text="Welcome Back " textFill="#c90000">
+                     <font>
+                        <Font name="Edwardian Script ITC" size="35.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

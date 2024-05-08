@@ -17,7 +17,7 @@
    
         <ScrollPane fx:id="scroll" layoutX="111.0" layoutY="140.0" prefHeight="550.0">
       <content>
-      
+
            <GridPane fx:id="postContainer" layoutX="20" layoutY="20" />
       </content>
         </ScrollPane>

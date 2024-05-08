@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SupprimerAccomodation">
+   <children>
+      <TextArea fx:id="TFIDADel" layoutX="125.0" layoutY="88.0" prefHeight="81.0" prefWidth="366.0" promptText="Please enter the ID of the Accomodation you want to Delete" />
+      <Button fx:id="retour" layoutX="283.0" layoutY="262.0" mnemonicParsing="false" onAction="#actionretour" text="Retour" />
+      <Button layoutX="244.0" layoutY="186.0" mnemonicParsing="false" onAction="#actionDelete" prefHeight="49.0" prefWidth="129.0" style="-fx-background-color: #FF5733; -fx-text-fill: white;" text="delete" textFill="#bc1e1e" />
+      <Label alignment="TOP_RIGHT" layoutX="193.0" layoutY="42.0" text="l'ID de l'Accomodation à supprimer :" textAlignment="JUSTIFY" underline="true">
+         <font>
+            <Font name="Ebrima" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
