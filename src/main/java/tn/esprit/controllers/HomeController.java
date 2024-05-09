@@ -15,7 +15,7 @@ public class HomeController {
     private void goToTransport(ActionEvent event) {
         try {
 
-            Parent parent = FXMLLoader.load(getClass().getResource("/Design.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/Design2.fxml"));
 
             Scene scene = new Scene(parent);
             scene.getStylesheets().add("file:///C:/Users/yassi/IdeaProjects/projet2/src/main/java/tn/esprit/css/fullpackstyling.css");

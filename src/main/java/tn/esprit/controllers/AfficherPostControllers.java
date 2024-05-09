@@ -87,6 +87,18 @@ public class AfficherPostControllers {
 
     public ListView<Post> AfficherList;
 
+    @FXML
+    private TextField txtId_Comment;
+
+    @FXML
+    private TextField txtReplies_count;
+
+    @FXML
+    private TextField txtContent;
+
+    @FXML
+    private TextField txtAuthorC;
+
     public void settxtTitle(String txtTitle) {
         this.txtTitle.setText(txtTitle);
     }
@@ -245,59 +257,71 @@ public class AfficherPostControllers {
             for (Comment comment : commentaires) { // Assuming post.getComments() returns a list of comments
                 if (comment.getParent_comment_id() == null){
                     VBox boxPerComment = new VBox(5);
-                boxPerComment.setStyle("-fx-padding: 5px; -fx-background-color: #EEEEEE;"); // Example styling
+                    boxPerComment.setStyle("-fx-padding: 5px; -fx-background-color: #EEEEEE;"); // Example styling
 
-                Label commentLabel = new Label(comment.getContent());
-                Image iconImageComm = new Image(getClass().getResource("/profile.png").toExternalForm());
+                    Label commentLabel = new Label(comment.getContent());
+                    Image iconImageComm = new Image(getClass().getResource("/profile.png").toExternalForm());
 
 // Create an ImageView with the icon image
-                ImageView iconImageViewComm = new ImageView(iconImage);
+                    ImageView iconImageViewComm = new ImageView(iconImage);
 
 // Set the size of the icon (optional)
-                iconImageViewComm.setFitWidth(10); // Adjust the width as needed
-                iconImageViewComm.setFitHeight(10); // Adjust the height as needed
-                // Add other elements for the post (title, author, etc.)
-                Label authorComm = new Label(comment.getAuthorC());
-                // Set the icon as the graphic of the label
-                authorComm.setGraphic(iconImageViewComm);
+                    iconImageViewComm.setFitWidth(10); // Adjust the width as needed
+                    iconImageViewComm.setFitHeight(10); // Adjust the height as needed
+                    // Add other elements for the post (title, author, etc.)
+                    Label authorComm = new Label(comment.getAuthorC());
+                    // Set the icon as the graphic of the label
+                    authorComm.setGraphic(iconImageViewComm);
 
-                //Like & Dislike
-                Label like_dislike = new Label(comment.getReacts_id().getlikes() + " likes " + comment.getReacts_id().getDislike() + " dislikes ");
-                Image iconLike = new Image(getClass().getResource("/like.png").toExternalForm());
-                Image iconDisLike = new Image(getClass().getResource("/dislike.png").toExternalForm());
-                ImageView iconLikeView = new ImageView(iconLike);
-                ImageView iconDisLikeView = new ImageView(iconDisLike);
-                iconLikeView.setFitWidth(10); // Adjust the width as needed
-                iconLikeView.setFitHeight(10); // Adjust the height as needed
-                iconDisLikeView.setFitWidth(10); // Adjust the width as needed
-                iconDisLikeView.setFitHeight(10); // Adjust the height as needed
-                Button likeButton = new Button();
-                Button dislikeButton = new Button();
-                Button replyButton = new Button("répondre");
-                likeButton.setGraphic(iconLikeView);
-                dislikeButton.setGraphic(iconDisLikeView);
-                likeButton.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        try {
-                            likeComment(comment);
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
+                    //Like & Dislike
+                    Label like_dislike = new Label(comment.getReacts_id().getlikes() + " likes " + comment.getReacts_id().getDislike() + " dislikes ");
+                    Image iconLike = new Image(getClass().getResource("/like.png").toExternalForm());
+                    Image iconDisLike = new Image(getClass().getResource("/dislike.png").toExternalForm());
+                    ImageView iconLikeView = new ImageView(iconLike);
+                    ImageView iconDisLikeView = new ImageView(iconDisLike);
+                    iconLikeView.setFitWidth(10); // Adjust the width as needed
+                    iconLikeView.setFitHeight(10); // Adjust the height as needed
+                    iconDisLikeView.setFitWidth(10); // Adjust the width as needed
+                    iconDisLikeView.setFitHeight(10); // Adjust the height as needed
+                    Button likeButton = new Button();
+                    Button dislikeButton = new Button();
+                    Button replyButton = new Button("répondre");
+                    Button EditButton = new Button("modifier");
+                    likeButton.setGraphic(iconLikeView);
+                    dislikeButton.setGraphic(iconDisLikeView);
+
+                    EditButton.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            try {
+                                modifierCommentaire(event,comment);
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
+                    });
+                    likeButton.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            try {
+                                likeComment(comment);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
 
-                    }
-                });
-                dislikeButton.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        try {
-                            dislikeComment(comment);
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
                         }
+                    });
+                    dislikeButton.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            try {
+                                dislikeComment(comment);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
 
-                    }
-                });
+                        }
+                    });
 
                     replyButton.setOnAction(event -> {
                         // Create a dialog box for entering the reply
@@ -328,14 +352,14 @@ public class AfficherPostControllers {
                         dialogStage.show();
                     });
 
-                //  Image iconReply = new Image(getClass().getResource("/reply.png").toExternalForm());
+                    //  Image iconReply = new Image(getClass().getResource("/reply.png").toExternalForm());
 
 
-                HBox reactBox = new HBox(5);
-                reactBox.getChildren().addAll(likeButton, dislikeButton,replyButton);
+                    HBox reactBox = new HBox(5);
+                    reactBox.getChildren().addAll(likeButton, dislikeButton,replyButton,EditButton);
 
-                //Reply
-                List<Comment> replies = commentService.recupererReply(comment.getId_Comment());
+                    //Reply
+                    List<Comment> replies = commentService.recupererReply(comment.getId_Comment());
 
                     VBox boxReply = new VBox(4);
                     boxReply.setStyle("-fx-padding: 4px; -fx-background-color: #FFF;"); // Example styling
@@ -361,13 +385,13 @@ public class AfficherPostControllers {
                         boxReply.getChildren().add(miniBox);
                     }
 
-                boxPerComment.getChildren().addAll(authorComm, commentLabel, like_dislike, reactBox);
+                    boxPerComment.getChildren().addAll(authorComm, commentLabel, like_dislike, reactBox);
                     if(!replies.isEmpty()){
                         boxPerComment.getChildren().add(boxReply);
                     }
 
-                        commentBox.getChildren().add(boxPerComment);
-            }
+                    commentBox.getChildren().add(boxPerComment);
+                }
 
             }
             VBox boxPerComment = new VBox(5);
@@ -557,6 +581,31 @@ public class AfficherPostControllers {
     }
 
     @FXML
+    void modifierCommentaire(javafx.event.ActionEvent event, Comment comment) throws SQLException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierC.fxml"));
+
+        try {
+            Parent root = loader.load();
+            ModifierCommentController modifierController = loader.getController();
+
+            modifierController.setTxtContent(txtContent.getText());
+            modifierController.setTxtReplies_count(txtReplies_count.getText());
+            modifierController.setTxtAuthorC(txtAuthorC.getText());
+            modifierController.setTxtIdC(txtId_Comment.getText());
+
+
+            // Debug statement to check if root is loaded successfully
+            System.out.println("FXML loaded successfully.");
+
+            txtContent.getScene().setRoot(root);
+        } catch (IOException e) {
+            // Instead of just printing, handle the IOException
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void likeComment(Comment comment) throws SQLException {
 
         try {
@@ -577,7 +626,7 @@ public class AfficherPostControllers {
             }
             sv_comment.modifierReact(react);
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost .fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost.fxml"));
                 Parent root = loader.load();
 
                 // Créer une nouvelle scène avec la vue chargée
@@ -596,7 +645,7 @@ public class AfficherPostControllers {
             e.printStackTrace();
         }
     }
- @FXML
+    @FXML
     void dislikeComment(Comment comment) throws SQLException {
 
         try {
@@ -616,7 +665,7 @@ public class AfficherPostControllers {
             }
             sv_comment.modifierReact(react);
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost .fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost.fxml"));
                 Parent root = loader.load();
 
                 // Créer une nouvelle scène avec la vue chargée
@@ -656,7 +705,7 @@ public class AfficherPostControllers {
 
         try {
             stage1.close();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost .fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène avec la vue chargée

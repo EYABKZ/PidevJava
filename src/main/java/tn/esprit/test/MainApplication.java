@@ -17,8 +17,9 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterPersonne.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherPost.fxml"));
             Scene scene = new Scene(root);
+            scene.getStylesheets().add("file:///C:/Users/yassi/IdeaProjects/projet2/src/main/java/tn/esprit/css/fullpackstyling.css");
             primaryStage.setTitle("Ajouter Personne");
             primaryStage.setScene(scene);
             primaryStage.show();

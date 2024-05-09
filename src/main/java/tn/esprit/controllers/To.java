@@ -83,6 +83,25 @@ public class To {
 
     public void ToListActionC() {
         Stage primaryStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Calendar.fxml"));
+        try {
+            Parent root = loader.load();
+
+
+            // Déclaration de débogage pour vérifier si le FXML est chargé avec succès
+            System.out.println("FXML loaded successfully.");
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("file:///C:/Users/Admin/IdeaProjects/ProjetPidev/src/main/java/tn/esprit/css/fullpackstyling.css");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            // Au lieu de simplement imprimer, gérez l'IOException
+            e.printStackTrace();
+        }
+    }
+
+    public void ToListActionC_2() {
+        Stage primaryStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCM.fxml"));
         try {
             Parent root = loader.load();

@@ -279,9 +279,10 @@ public class AfficherTControllers {
 
                 // Pass the selected voiture to the controller to pre-fill fields
                 modifierController.setTextFields(selectedVoiture);
-
+                // Get the current stage from the event source
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 // Create a new stage
-                Stage stage = new Stage();
+
                 stage.setScene(new Scene(root));
                 stage.setTitle("Modifier Transport");
                 stage.show();

@@ -39,7 +39,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Button>
-      <Button fx:id="Reclamation" layoutX="463.0" layoutY="413.0" mnemonicParsing="false" opacity="0.83" prefHeight="46.0" prefWidth="395.0" text="Gestion Des Reclamations">
+      <Button fx:id="Reclamation" layoutX="463.0" layoutY="413.0" mnemonicParsing="false" onAction="#Gestion_Transport" opacity="0.83" prefHeight="46.0" prefWidth="395.0" text="Gestion Transport">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
