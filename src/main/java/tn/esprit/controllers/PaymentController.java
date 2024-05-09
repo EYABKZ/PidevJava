@@ -93,7 +93,7 @@ public class PaymentController {
 
             // Create parameters for the charge
             ChargeCreateParams params = ChargeCreateParams.builder()
-                    .setAmount(10000L) // Amount in cents (e.g., $10.00)
+                    .setAmount(150000L) // Amount in cents (e.g., $10.00)
                     .setCurrency("usd") // Currency
                     .setSource("tok_visa") // Use a test token for demo purposes
                     .setDescription("Payment for accommodation") // Description
