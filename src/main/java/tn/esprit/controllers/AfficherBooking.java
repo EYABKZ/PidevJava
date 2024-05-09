@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import tn.esprit.entities.Accomodation;
 import tn.esprit.entities.Booking;
 import tn.esprit.services.IBooking;
 
@@ -22,7 +30,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+
+
 public class AfficherBooking implements Initializable {
+
+    @FXML
+    private TextField searchfield;
 
     @FXML
     private Button add;
@@ -146,4 +159,100 @@ public class AfficherBooking implements Initializable {
 
     }
 
+
+    @FXML
+    void sffff(KeyEvent event) throws SQLException, IOException {
+        List<Booking> bookings = iBooking.search(Date.valueOf(searchfield.getText()));
+//        System.out.println(bookings);
+//        cartev.getChildren().clear();
+        for (Booking booking : bookings) {
+            FXMLLoader carteArticleLoader = new FXMLLoader(getClass().getResource("/carteBooking.fxml"));
+            HBox carteArticleBox = carteArticleLoader.load();
+            carteBooking carte = carteArticleLoader.getController();
+
+            carte.setId(String.valueOf(booking.getId()));
+            carte.setDebut((Date) booking.getDebut());
+            carte.setFin ((Date) booking.getFin());
+
+            cartev.getChildren().add(carteArticleBox);
+        }
+    }
+
+    public class PDFGenerator {
+
+        public void generatePDF(List<Booking> bookings, String filePath) throws IOException {
+            try (PDDocument document = new PDDocument()) {
+                PDPage coverPage = createCoverPage(document);
+                document.addPage(coverPage);
+
+                PDPage contentPage = new PDPage();
+                document.addPage(contentPage);
+
+                addContent(document, bookings, contentPage);
+
+                document.save(filePath);
+            }
+        }
+
+        private PDPage createCoverPage(PDDocument document) throws IOException {
+            PDPage page = new PDPage();
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 24);
+                contentStream.beginText();
+                contentStream.newLineAtOffset(100, 700);
+                contentStream.showText("Bookings Report");
+                contentStream.endText();
+            }
+            return page;
+        }
+
+        private void addContent(PDDocument document, List<Booking> bookings, PDPage page) throws IOException {
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                contentStream.setFont(PDType1Font.HELVETICA, 12);
+                int yOffset = 680;
+                for (Booking booking : bookings) {
+                    contentStream.beginText();
+                    contentStream.newLineAtOffset(100, yOffset);
+                    contentStream.showText("ID: " + booking.getId()+"      Debut: " + booking.getDebut()+"    Fin: " + booking.getFin()+"   User ID: " + booking.getUserId()+"     Accomodation Id: " + booking.getAccomodationId());
+                    contentStream.newLine();
+//                    contentStream.showText("Debut: " + booking.getDebut());
+//                    contentStream.newLine();
+//                    contentStream.showText("Fin: " + booking.getFin());
+//                    contentStream.newLine();
+//                    contentStream.showText("User ID: " + booking.getUserId());
+//                    contentStream.newLine();
+//                    contentStream.showText("Accomodation Id: " + booking.getAccomodationId());
+//                    contentStream.newLine();
+                    contentStream.endText();
+                    yOffset -= 50; // Adjust the vertical position for the next booking
+                }
+            }
+        }
+
+    }
+    @FXML
+    void handlePrintButton(ActionEvent event) {
+        try {
+            // Get the list of bookings
+            List<Booking> bookings = iBooking.lister();
+
+            // Generate PDF
+            AfficherBooking.PDFGenerator pdfGenerator = new AfficherBooking.PDFGenerator();
+            pdfGenerator.generatePDF(bookings, "bookings.pdf");
+
+            // Display success message
+            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+            successAlert.setTitle("PDF Generated");
+            successAlert.setHeaderText(null);
+            successAlert.setContentText("PDF generated successfully.");
+            successAlert.showAndWait();
+        } catch (Exception e) {
+            // Handle any exceptions that occur during PDF generation
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Error");
+            errorAlert.setHeaderText(null);
+            errorAlert.setContentText("Error generating PDF: " + e.getMessage());
+            errorAlert.showAndWait();
+        }
+    }
 }

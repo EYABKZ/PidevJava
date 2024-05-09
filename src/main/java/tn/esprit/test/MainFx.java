@@ -15,8 +15,9 @@ public class MainFx extends Application {
     public void start(Stage primaryStage) throws Exception {
         //-------------------ADMIN-------------
 
+       // FXMLLoader loader = new FXMLLoader(getClass().getResource("/Front.fxml"));
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Front.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
 
         //---------------------------CLIENT---------------------
         // FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherFront.fxml"));

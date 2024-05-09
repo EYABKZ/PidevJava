@@ -32,5 +32,7 @@
          </center>
       </BorderPane>
       <Button fx:id="home" layoutX="513.0" layoutY="14.0" mnemonicParsing="false" onAction="#actionHome" opacity="0.5" text="🏠" />
+        <Button fx:id="printButton" layoutX="107.0" layoutY="421.0" mnemonicParsing="false" onAction="#handlePrintButton" prefHeight="37.0" prefWidth="83.0" text="Print PDF" />
+        <TextField fx:id="searchfield" layoutX="326.0" layoutY="14.0" onKeyTyped="#sffff" prefHeight="25.0" prefWidth="137.0" promptText="Search" />
     </children>
 </AnchorPane>

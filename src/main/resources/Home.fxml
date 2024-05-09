@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Home">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Home">
    <children>
       <Button fx:id="GA" layoutX="93.0" layoutY="113.0" mnemonicParsing="false" onAction="#actionAccomodation" prefHeight="87.0" prefWidth="399.0" text="Gestion Accomodation">
          <font>

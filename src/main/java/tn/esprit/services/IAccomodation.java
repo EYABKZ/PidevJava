@@ -72,5 +72,24 @@ public class IAccomodation implements IService<Accomodation>{
         return null;
     }
 
+    public ArrayList<Accomodation> rech(String ffff) throws SQLException {
+        String sql = "Select * FROM accomodation WHERE lieu LIKE CONCAT ('%', ?, '%')";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, ffff);
+        ResultSet rs =statement.executeQuery(sql);
+        ArrayList<Accomodation> accomodations = new ArrayList<>();
+        while (rs.next()){
+            Accomodation a=new Accomodation();
+            a.setidaccomodation(rs.getString("id"));
+            a.setlieuaccomodation(rs.getString("lieu"));
+            a.setdescriptionaccomodation(rs.getString("description"));
+            accomodations.add(a);
+        }
+
+
+        return accomodations;
+    }
+
+
 
 }

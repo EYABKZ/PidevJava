@@ -16,6 +16,7 @@ public interface IService <T>{
     T getById(int id) throws SQLException;
     ArrayList<T> lister() throws SQLException ;
 
+
  //   void ajouter_booking (T t) throws SQLException;
    // void supprimer_booking (int id) throws SQLException;
     //void modifier_booking (T t) throws SQLException;

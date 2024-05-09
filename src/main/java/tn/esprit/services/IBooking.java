@@ -86,4 +86,25 @@ public class IBooking implements IService<Booking> {
         }
         return null;
     }
+
+
+
+    public ArrayList<Booking> search(Date ffff) throws SQLException {
+        ArrayList<Booking> bookings = new ArrayList<>();
+        String sql = "Select * FROM booking WHERE debut LIKE CONCAT ('%', ?, '%')";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setDate(1, ffff);
+        ResultSet rs =statement.executeQuery(sql);
+        while (rs.next()) {
+            Booking b = new Booking();
+            b.setId(rs.getInt("id_booking"));
+            b.setDebut(rs.getDate("debut"));
+            b.setFin(rs.getDate("fin"));
+            b.setUserId(rs.getInt("user_id"));
+            b.setAccomodationId(rs.getInt("accomodation_id"));
+            bookings.add(b);
+        }
+
+        return bookings;
+    }
 }
