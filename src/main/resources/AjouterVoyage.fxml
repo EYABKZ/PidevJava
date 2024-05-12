@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterVoyage">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#241d40" height="693.0" stroke="BLACK" strokeType="INSIDE" width="1041.0" />
+      <Text fill="WHITE" layoutX="143.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicule">
+         <font>
+            <Font size="21.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="494.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hebergement">
+         <font>
+            <Font size="21.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="677.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Evenement">
+         <font>
+            <Font size="21.0" />
+         </font></Text>
+      <DatePicker fx:id="departdate" layoutX="143.0" layoutY="251.0" />
+      <Text fill="WHITE" layoutX="145.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Depart">
+         <font>
+            <Font size="21.0" />
+         </font></Text>
+      <DatePicker fx:id="arriveedate" layoutX="143.0" layoutY="316.0" />
+      <Text fill="WHITE" layoutX="145.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrivée">
+         <font>
+            <Font size="21.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="308.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilisateur">
+         <font>
+            <Font size="21.0" />
+         </font></Text>
+      <ComboBox fx:id="vehiculeid" layoutX="141.0" layoutY="427.0" prefHeight="31.0" prefWidth="128.0" stylesheets="@../Styles/styles.css" />
+      <ComboBox fx:id="hebergementid" layoutX="492.0" layoutY="429.0" prefHeight="31.0" prefWidth="147.0" />
+      <ComboBox fx:id="evenementid" layoutX="675.0" layoutY="429.0" prefHeight="31.0" prefWidth="147.0" />
+      <ComboBox fx:id="utilisateurid" layoutX="307.0" layoutY="428.0" prefHeight="31.0" prefWidth="147.0" />
+      <Button layoutX="141.0" layoutY="505.0" mnemonicParsing="false" onAction="#ajouterVoyage" prefHeight="31.0" prefWidth="147.0" text="Ajouter" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fa2c56" height="477.0" layoutX="377.0" layoutY="-302.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 150; -fx-arc-width: 150; -fx-rotate: -30;" width="275.0" />
+      <Label layoutX="143.0" layoutY="152.0" text="Ajouter Voyage" textFill="WHITE">
+         <font>
+            <Font name="Algerian" size="28.0" />
+         </font>
+      </Label>
+
+   </children>
+</AnchorPane>

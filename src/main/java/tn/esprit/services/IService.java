@@ -3,9 +3,8 @@ package tn.esprit.services;
 import java.sql.SQLException;
 import java.util.List;
 
-import tn.esprit.entities.Comment;
-import tn.esprit.entities.Post;
-import tn.esprit.entities.React;
+import javafx.collections.ObservableList;
+import tn.esprit.entities.*;
 
 public interface IService <T>{
 
@@ -26,4 +25,9 @@ public interface IService <T>{
 
     public void modifierReact(React react) throws SQLException;
     public List<Comment> recupererReply(int id_parent);
+
+    public ObservableList<T> afficher() throws SQLException;
+
+    public void supprimer(Groupe groupe) throws SQLException;
+    public void supprimer(Voyage voyage) throws SQLException;
 }

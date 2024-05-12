@@ -42,7 +42,7 @@ import javax.mail.internet.MimeMessage;
 import org.controlsfx.control.Notifications;
 
 import tn.esprit.utils.SessionManager;
-import utils.MyConnection;
+import tn.esprit.utils.MyConnection;
 //import utils.SessionManager;
 
 public class SignInController {

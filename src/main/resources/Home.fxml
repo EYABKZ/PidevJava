@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
@@ -10,12 +12,27 @@
 
 <AnchorPane prefHeight="685.0" prefWidth="1133.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.HomeController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393351" height="641.0" layoutX="26.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" width="1088.0" />
-      <Button layoutX="412.0" layoutY="184.0" mnemonicParsing="false" onAction="#goToTransport" prefHeight="40.0" prefWidth="347.0" text="Transport" />
-      <Label layoutX="424.0" layoutY="85.0" text="Welcome Home !" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eb0400a8" height="678.0" layoutX="3.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="538.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="678.0" layoutX="539.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="590.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.6116504854368932" startX="1.0" startY="0.24271844660194186">
+               <stops>
+                  <Stop color="#31024d" />
+                  <Stop color="#eb0400a6" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Button layoutX="669.0" layoutY="240.0" mnemonicParsing="false" onAction="#goToTransport" prefHeight="40.0" prefWidth="347.0" text="Transport" />
+      <Label layoutX="681.0" layoutY="141.0" text="Welcome Home !" textFill="WHITE">
          <font>
             <Font name="Algerian" size="41.0" />
          </font></Label>
-      <Button layoutX="415.0" layoutY="263.0" mnemonicParsing="false" onAction="#goToForum" prefHeight="40.0" prefWidth="347.0" text="Forum" />
+      <Button layoutX="672.0" layoutY="319.0" mnemonicParsing="false" onAction="#goToForum" prefHeight="40.0" prefWidth="347.0" text="Forum" />
+      <Button layoutX="672.0" layoutY="394.0" mnemonicParsing="false" onAction="#goToVoyage" prefHeight="40.0" prefWidth="347.0" text="Voyage" />
+      <ImageView fitHeight="358.0" fitWidth="400.0" layoutX="104.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/yassi/IdeaProjects/projet2/src/main/Img/logoTravel.png" />
+         </image></ImageView>
+      <Button layoutX="672.0" layoutY="463.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="347.0" text="Accomodation" />
    </children>
 </AnchorPane>

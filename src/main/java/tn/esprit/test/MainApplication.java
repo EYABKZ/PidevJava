@@ -17,10 +17,10 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherPost.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Home.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add("file:///C:/Users/yassi/IdeaProjects/projet2/src/main/java/tn/esprit/css/fullpackstyling.css");
-            primaryStage.setTitle("Ajouter Personne");
+            primaryStage.setTitle("Ajouter personne");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {

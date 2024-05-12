@@ -1,6 +1,7 @@
 package tn.esprit.services;
 
 
+import javafx.collections.ObservableList;
 import tn.esprit.entities.*;
 import tn.esprit.util.MyDataBase;
 
@@ -117,6 +118,21 @@ public class ServiceCalendar implements IService<Calendar> {
     @Override
     public List<Comment> recupererReply(int id_parent) {
         return null;
+    }
+
+    @Override
+    public ObservableList<Calendar> afficher() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void supprimer(Groupe groupe) throws SQLException {
+
+    }
+
+    @Override
+    public void supprimer(Voyage voyage) throws SQLException {
+
     }
 
     public List<Moy_Transport> recupererTousLesTransports() throws SQLException {

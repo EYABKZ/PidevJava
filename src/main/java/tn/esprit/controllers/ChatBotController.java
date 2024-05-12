@@ -1,71 +1,98 @@
 package tn.esprit.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
-import java.awt.*;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import okhttp3.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+
+import java.io.IOException;
 
 public class ChatBotController {
+
+    private static final String API_KEY = "cRR0IkqVPPvryQIDJtFUU6mDGCcQTHOg";
+    private static final String API_URL = "https://api.ai21.com/studio/v1/j2-mid/complete";
 
     @FXML
     private TextArea chatArea;
 
     @FXML
-    private TextField msgField;
-
-    private void appendMessage(String message) {
-        chatArea.appendText(message + "\n");
-    }
-
-    private String getChatBotResponse(String user_msg) {
-        // Convert the user message to lowercase for easier comparison
-        String message = user_msg.toLowerCase();
-
-        // Example response logic
-        if (message.contains("what is your name")) {
-            return "My name is ChatBot.";
-        } else if (message.contains("how old are you") || message.contains("what's your age")) {
-            return "I'm just a computer program, so I don't have an age!";
-        } else if (message.contains("what day is it today")) {
-            LocalDate currentDate = LocalDate.now();
-            return "Today is " + currentDate.format(DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy"));
-        } else if (message.contains("what time is it now")) {
-            LocalTime currentTime = LocalTime.now();
-            return "It's currently " + currentTime.format(DateTimeFormatter.ofPattern("h:mm a"));
-        } else if (message.contains("how are you")) {
-            return "I'm okay, thank you!";
-        } else if (message.contains("hello") || message.contains("hi")) {
-            return "Hello there!";
-        } else {
-            // Default response for unrecognized messages
-            return "I'm not sure how to respond to that.";
-        }
-    }
+    private TextField inputField;
 
     @FXML
-    private void sendMessage() {
-        String message = msgField.getText().trim();
-        if (!message.isEmpty()) {
-            // Add user message to chat area
-            appendMessage("You: " + message);
-            // Implement your chatbot logic here, and get the response
-            String response = getChatBotResponse(message);
-            // Add chatbot response to chat area
-            appendMessage("ChatBot: " + response);
-            appendMessage("--------------------------\n");
-            // Clear input field
-            msgField.clear();
+    private void sendMessage(ActionEvent event) {
+        String userMessage = inputField.getText().trim();
+        if (!userMessage.isEmpty()) {
+            chatArea.appendText("You: " + userMessage + "\n");
 
+            OkHttpClient client = new OkHttpClient();
+            MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
+
+            // Construct the JSON request body
+            String json = "{\"prompt\": \"" + userMessage + "\"}";
+            RequestBody requestBody = RequestBody.create(json, mediaType);
+
+            // Build the request
+            Request request = new Request.Builder()
+                    .url(API_URL)
+                    .addHeader("Authorization", "Bearer " + API_KEY)
+                    .post(requestBody)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    chatArea.appendText("Bot: Sorry, I couldn't process your request.\n");
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (!response.isSuccessful()) {
+                        String errorBody = response.body().string();
+                        throw new IOException("Unexpected code " + response.code() + ": " + errorBody);
+                    }
+                    String jsonResponse = response.body().string();
+                    String botResponse = parseResponse(jsonResponse);
+                    chatArea.appendText("Bot: " + botResponse + "\n");
+                }
+            });
+
+            inputField.clear();
         }
     }
 
+    private String parseResponse(String jsonResponse) {
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(jsonResponse, JsonObject.class);
 
+        if (jsonObject.has("completions")) {
+            JsonArray completions = jsonObject.getAsJsonArray("completions");
+            if (completions.size() > 0) {
+                JsonObject firstCompletion = completions.get(0).getAsJsonObject();
+                if (firstCompletion.has("data")) {
+                    JsonObject data = firstCompletion.getAsJsonObject("data");
+                    StringBuilder textBuilder = new StringBuilder();
+                    if (data.has("text")) {
+                        textBuilder.append(data.get("text").getAsString());
+                    }
+                    if (data.has("tokens")) {
+                        JsonArray tokensArray = data.getAsJsonArray("tokens");
+                        for (JsonElement tokenElement : tokensArray) {
+                            JsonObject tokenObject = tokenElement.getAsJsonObject();
+                            if (tokenObject.has("token")) {
+                                textBuilder.append(tokenObject.get("token").getAsString()).append(" ");
+                            }
+                        }
+                    }
+                    return textBuilder.toString().trim();
+                }
+            }
+        }
 
+        return "No response found.";
+    }
 }

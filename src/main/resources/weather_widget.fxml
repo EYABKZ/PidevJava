@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox alignment="CENTER" prefHeight="400" prefWidth="638.0" spacing="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.WeatherWidgetController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+
+
+    <ChoiceBox fx:id="languageChoiceBox" layoutX="30.0" layoutY="350.0" prefWidth="150.0" onAction="#translateScene">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="en"/>
+                <String fx:value="fr"/>
+                <!-- Add more languages as needed -->
+            </FXCollections>
+        </items>
+    </ChoiceBox>
+    <!-- Current Weather Conditions -->
+    <VBox alignment="CENTER">
+        <Label text="Current Weather Conditions" />
+        <GridPane alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+            </rowConstraints>
+            <Label fx:id="temperatureLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label fx:id="humidityLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="windSpeedLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="conditionsLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        </GridPane>
+    </VBox>
+
+    <!-- Forecast -->
+    <VBox alignment="CENTER">
+        <Label text="Weather Forecast" />
+        <ListView fx:id="forecastListView" prefHeight="150" prefWidth="436.0" />
+    </VBox>
+
+    <!-- Weather Icons -->
+    <HBox alignment="CENTER">
+        <ImageView fx:id="weatherIcon1" fitHeight="50" fitWidth="50" />
+        <ImageView fx:id="weatherIcon2" fitHeight="50" fitWidth="50" />
+        <!-- Add more ImageView elements for other weather icons -->
+    </HBox>
+
+</VBox>

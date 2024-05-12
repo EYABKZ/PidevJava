@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="683.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherVoyage">
+   <children>
+  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="683.0" prefWidth="1031.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#241d40" height="683.0" stroke="BLACK" strokeType="INSIDE" width="1031.0" />
+            <Label layoutX="27.0" layoutY="57.0" prefHeight="33.0" prefWidth="215.0" text="List Groupes :" textFill="WHITE">
+               <font>
+                  <Font name="Algerian" size="28.0" />
+               </font></Label>
+            <Button layoutX="30.0" layoutY="623.0" mnemonicParsing="false" onAction="#AddGroupe" prefHeight="31.0" prefWidth="112.0" text="Add" />
+             <Button layoutX="159.0" layoutY="623.0" mnemonicParsing="false" onAction="#ModifyGroupe" prefHeight="31.0" prefWidth="112.0" text="Modify" />
+             <Button layoutX="288.0" layoutY="623.0" mnemonicParsing="false" onAction="#DeleteGroupe" prefHeight="31.0" prefWidth="100.0" text="Delete" />
+            <Button layoutX="939.0" layoutY="78.0" mnemonicParsing="false" onAction="#refresh2" text="Refresh" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fa2c56" height="477.0" layoutX="367.0" layoutY="-312.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 150; -fx-arc-width: 150; -fx-rotate: -30;" width="275.0" />
+            <TableView fx:id="TableGroupe" layoutX="27.0" layoutY="124.0" prefHeight="477.0" prefWidth="982.0">
+              <columns>
+                <TableColumn fx:id="ColGID" prefWidth="228.0" text="id" />
+                <TableColumn fx:id="ColGUtilisateurID" prefWidth="284.0" text="utilisateur_id" />
+                  <TableColumn fx:id="ColVoyageID" prefWidth="186.0" text="voyage_id" />
+                  <TableColumn fx:id="ColNumberMembre" prefWidth="283.0" text="number_membre" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

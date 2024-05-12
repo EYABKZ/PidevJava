@@ -1,15 +1,13 @@
 package tn.esprit.services;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import tn.esprit.controllers.AfficherPControllers;
-import tn.esprit.entities.Comment;
-import tn.esprit.entities.Personne;
-import tn.esprit.entities.Post;
-import tn.esprit.entities.React;
+import tn.esprit.entities.*;
 import tn.esprit.util.MyDataBase;
 
 import java.io.IOException;
@@ -111,6 +109,21 @@ public class ServicePersonne implements IService<Personne> {
     @Override
     public List<Comment> recupererReply(int id_parent) {
         return null;
+    }
+
+    @Override
+    public ObservableList<Personne> afficher() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void supprimer(Groupe groupe) throws SQLException {
+
+    }
+
+    @Override
+    public void supprimer(Voyage voyage) throws SQLException {
+
     }
 
 

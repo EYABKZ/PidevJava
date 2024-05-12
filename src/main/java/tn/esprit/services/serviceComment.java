@@ -1,9 +1,8 @@
 package tn.esprit.services;
 
 
-import tn.esprit.entities.Comment;
-import tn.esprit.entities.Post;
-import tn.esprit.entities.React;
+import javafx.collections.ObservableList;
+import tn.esprit.entities.*;
 import tn.esprit.util.MyDataBase;
 
 import java.sql.*;
@@ -189,6 +188,21 @@ public class serviceComment implements IService<Comment> {
             e.printStackTrace();
         }
         return comments;
+    }
+
+    @Override
+    public ObservableList<Comment> afficher() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void supprimer(Groupe groupe) throws SQLException {
+
+    }
+
+    @Override
+    public void supprimer(Voyage voyage) throws SQLException {
+
     }
 
 }

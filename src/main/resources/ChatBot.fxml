@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="724.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ChatBotController">
+<AnchorPane prefHeight="724.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ChatBotYassineController">
    <children>
       <TextArea fx:id="chatArea" editable="false" layoutX="14.0" layoutY="83.0" prefHeight="559.0" prefWidth="570.0" />
       <TextField fx:id="msgField" layoutX="13.0" layoutY="658.0" prefHeight="42.0" prefWidth="450.0" promptText="Type a message here..." />

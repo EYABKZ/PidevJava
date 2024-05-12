@@ -1,10 +1,8 @@
 package tn.esprit.services;
 
 
-import tn.esprit.entities.Comment;
-import tn.esprit.entities.Moy_Transport;
-import tn.esprit.entities.Post;
-import tn.esprit.entities.React;
+import javafx.collections.ObservableList;
+import tn.esprit.entities.*;
 import tn.esprit.util.MyDataBase;
 
 import java.sql.*;
@@ -105,5 +103,20 @@ public class ServiceMoy_Transport implements IService<Moy_Transport> {
     @Override
     public List<Comment> recupererReply(int id_parent) {
         return null;
+    }
+
+    @Override
+    public ObservableList<Moy_Transport> afficher() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void supprimer(Groupe groupe) throws SQLException {
+
+    }
+
+    @Override
+    public void supprimer(Voyage voyage) throws SQLException {
+
     }
 }

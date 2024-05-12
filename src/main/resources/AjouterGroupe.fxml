@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterGroupe">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#241d40" height="693.0" stroke="BLACK" strokeType="INSIDE" width="1041.0" />
+      <ComboBox fx:id="utilisateurid" layoutX="157.0" layoutY="210.0" prefHeight="31.0" prefWidth="238.0" />
+      <Text fill="WHITE" layoutX="157.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilisateur_id">
+         <font>
+            <Font size="24.0" />
+         </font></Text>
+      <ComboBox fx:id="voyageid" layoutX="157.0" layoutY="299.0" prefHeight="31.0" prefWidth="238.0" />
+      <Text fill="WHITE" layoutX="157.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voyage_id">
+         <font>
+            <Font size="24.0" />
+         </font></Text>
+      <TextField fx:id="nomber" layoutX="158.0" layoutY="396.0" prefHeight="31.0" prefWidth="238.0" />
+      <Text fill="WHITE" layoutX="157.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de membres">
+         <font>
+            <Font size="24.0" />
+         </font></Text>
+      <Button layoutX="182.0" layoutY="480.0" mnemonicParsing="false" onAction="#ajouterGroupe" prefHeight="31.0" prefWidth="164.0" text="Ajouter" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fa2c56" height="477.0" layoutX="377.0" layoutY="-302.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 150; -fx-arc-width: 150; -fx-rotate: -30;" width="275.0" />
+      <Label layoutX="61.0" layoutY="97.0" text="Ajouter Grpupe" textFill="WHITE">
+         <font>
+            <Font name="Algerian" size="28.0" />
+         </font>
+      </Label>
+
+   </children>
+</AnchorPane>
