@@ -96,6 +96,21 @@
         }
 
         @Override
+        public ArrayList<Booking> lister() throws SQLException {
+            return null;
+        }
+
+        @Override
+        public ArrayList<Accomodation> lister_acc() throws SQLException {
+            return null;
+        }
+
+        @Override
+        public Accomodation getById(int id) {
+            return null;
+        }
+
+        @Override
         public ObservableList<Voyage> afficher() throws SQLException {
             ObservableList<Voyage> voyages = FXCollections.observableArrayList();
             String sql = "SELECT * FROM voyage";

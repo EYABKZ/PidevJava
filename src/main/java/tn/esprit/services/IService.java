@@ -1,6 +1,7 @@
 package tn.esprit.services;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -30,4 +31,8 @@ public interface IService <T>{
 
     public void supprimer(Groupe groupe) throws SQLException;
     public void supprimer(Voyage voyage) throws SQLException;
+    public ArrayList<Booking> lister() throws SQLException;
+    public ArrayList<Accomodation> lister_acc() throws SQLException;
+    public Accomodation getById(int id);
+
 }

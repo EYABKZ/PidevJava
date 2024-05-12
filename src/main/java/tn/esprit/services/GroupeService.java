@@ -92,6 +92,21 @@ public class GroupeService implements IService<Groupe> {
     }
 
     @Override
+    public ArrayList<Booking> lister() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Accomodation> lister_acc() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Accomodation getById(int id) {
+        return null;
+    }
+
+    @Override
     public ObservableList<Groupe> afficher() throws SQLException {
         ObservableList<Groupe> groupes= FXCollections.observableArrayList();
         String sql = "select * from groupe";

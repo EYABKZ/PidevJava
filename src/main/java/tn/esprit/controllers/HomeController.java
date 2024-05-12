@@ -61,4 +61,21 @@ public class HomeController {
             System.err.println(ex.getMessage());
         }
     }
+
+    @FXML
+    private void goToAccomodation(ActionEvent event) {
+        try {
+
+            Parent parent = FXMLLoader.load(getClass().getResource("/DesignDali.fxml"));
+
+            Scene scene = new Scene(parent);
+            scene.getStylesheets().add("file:///C:/Users/yassi/IdeaProjects/projet2/src/main/java/tn/esprit/css/fullpackstyling.css");
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
 }

@@ -205,4 +205,19 @@ public class serviceComment implements IService<Comment> {
 
     }
 
+    @Override
+    public ArrayList<Booking> lister() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Accomodation> lister_acc() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Accomodation getById(int id) {
+        return null;
+    }
+
 }

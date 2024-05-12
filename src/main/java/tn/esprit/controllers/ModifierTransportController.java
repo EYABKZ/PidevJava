@@ -63,10 +63,8 @@ public class ModifierTransportController {
         Stage stage = (Stage) button.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
         if(selectedFile != null){
-            label.setText(selectedFile.getName());
-            String imageUrl = "file:" + selectedFile.getAbsolutePath();
-            Image image = new Image(imageUrl);
-            Transport_Picture.setImage(image);
+            String fileName = selectedFile.getName(); // Get the file name
+            label.setText(fileName);
         }
     }
 
@@ -97,7 +95,7 @@ public class ModifierTransportController {
         try {
             Moy_Transport existingTransport = new Moy_Transport();
 
-            String imageUrl = Transport_Picture.getImage().getUrl();
+            String imageUrl = label.getText();
             existingTransport.setTransport_Picture(imageUrl);
             existingTransport.setTransport_Model(txtTransport_Model.getText());
             existingTransport.setTransport_Price(Integer.parseInt(txtTransport_Price.getText()));
@@ -202,9 +200,7 @@ public class ModifierTransportController {
         txtTransport_Price.setText(String.valueOf(R.getTransport_Price()));
         txtTransport_Description.setText(R.getTransport_Description());
         txtDisponibility.setText(R.getDisponibility());
-
-        Image image = new Image(R.getTransport_Picture());
-        Transport_Picture.setImage(image);
+        label.setText(R.getTransport_Picture());
     }
 
 }

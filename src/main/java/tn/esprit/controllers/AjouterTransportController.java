@@ -26,7 +26,7 @@ public class AjouterTransportController {
 
     @FXML
     Label label = new Label();
-    private ImageView Transport_Picture = new ImageView();
+    private TextField Transport_Picture;
 
     @FXML
     private  Button button = new Button("Open a file");
@@ -57,21 +57,19 @@ public class AjouterTransportController {
         Stage stage = (Stage) button.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
         if(selectedFile != null){
-            label.setText(selectedFile.getName());
-            String imageUrl = "file:" + selectedFile.getAbsolutePath();
-            Image image = new Image(imageUrl);
-            Transport_Picture.setImage(image);
+            String fileName = selectedFile.getName(); // Get the file name
+            label.setText(fileName);
         }
     }
 
     @FXML
     void ajouterAction(ActionEvent event) {
         try {
-            String imagePath = Transport_Picture.getImage().getUrl();
             String model = txtTransport_Model.getText();
             String price = txtTransport_Price.getText();
             String description = txtTransport_Description.getText();
             String disponibility = txtDisponibility.getText();
+            String imagePath = label.getText();
 
 
             if (!price.matches("\\d+") || price.isEmpty()) {
@@ -125,15 +123,7 @@ public class AjouterTransportController {
     }
 
 
-    public void setTransport_Picture(String imagePath) {
-        if (imagePath != null && !imagePath.isEmpty()) {
-            Image image = new Image(imagePath);
-            this.Transport_Picture.setImage(image);
-        } else {
-            // Handle the case where the imagePath is empty or null
-            System.out.println("Image path is empty or null");
-        }
-    }
+    public void setTransport_Picture(String txtTransport_Model) {this.txtTransport_Model.setText(txtTransport_Model);}
 
     public void setTxtTransport_Model(String txtTransport_Model) { this.txtTransport_Model.setText(txtTransport_Model);}
 

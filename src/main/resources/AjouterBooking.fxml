@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterBooking">
+   <children>
+      <Button fx:id="retour" layoutX="48.0" layoutY="288.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
+      <Button layoutX="202.0" layoutY="228.0" mnemonicParsing="false" onAction="#ajouterReservation" prefHeight="25.0" prefWidth="77.0" text="Reserver" />
+      <Label layoutX="62.0" layoutY="167.0" text="Fin">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="117.0" prefHeight="25.0" prefWidth="93.0" text="Debut">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="159.0" fitWidth="170.0" layoutX="329.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../HyperNova-Gestion_Evenement%20(4)/HyperNova-Gestion_Evenement/src/main/resources/images/book.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="70.0" layoutY="21.0" prefHeight="36.0" prefWidth="363.0" text=" Your Reservation" textAlignment="CENTER" textFill="#4e3131" underline="true">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="26.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="TFDB" layoutX="137.0" layoutY="117.0" />
+      <DatePicker fx:id="TFFB" layoutX="137.0" layoutY="167.0" />
+   </children>
+</AnchorPane>

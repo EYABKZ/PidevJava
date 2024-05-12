@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="20.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #f4f4f4;" fx:controller="tn.esprit.controllers.PaymentController">
+    <children>
+        <Label text="Accommodation Payment" fx:id="titleLabel" style="-fx-text-fill: #333333;">
+            <font>
+                <Font name="Arial" size="30.0" />
+            </font>
+        </Label>
+        <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" style="-fx-background-color: #ffffff; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #cccccc;">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Card Number:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-text-fill: #666666;">
+                    <font>
+                        <Font name="Arial" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="cardNumberField" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-background-color: #f9f9f9; -fx-border-color: #cccccc;">
+                    <font>
+                        <Font name="Arial" size="14.0" />
+                    </font>
+                </TextField>
+                <Label text="Expiry Date (MM/YYYY):" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-text-fill: #666666;">
+                    <font>
+                        <Font name="Arial" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="expiryDateField" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-background-color: #f9f9f9; -fx-border-color: #cccccc;">
+                    <font>
+                        <Font name="Arial" size="14.0" />
+                    </font>
+                </TextField>
+                <Label text="CVC:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-text-fill: #666666;">
+                    <font>
+                        <Font name="Arial" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="cvcField" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-background-color: #f9f9f9; -fx-border-color: #cccccc;">
+                    <font>
+                        <Font name="Arial" size="14.0" />
+                    </font>
+                </TextField>
+                <Label text="Name on Card:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-text-fill: #666666;">
+                    <font>
+                        <Font name="Arial" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="nameOnCardField" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-background-color: #f9f9f9; -fx-border-color: #cccccc;">
+                    <font>
+                        <Font name="Arial" size="14.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="payButton" text="Pay Now" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10px 20px; -fx-font-size: 16px; -fx-border-radius: 5px;" onAction="#handlePayButtonClicked">
+                    <font>
+                        <Font name="Arial" size="16.0" />
+                    </font>
+                </Button>
+            </children>
+        </GridPane>
+    </children>
+</VBox>

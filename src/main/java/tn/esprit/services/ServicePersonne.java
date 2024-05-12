@@ -126,6 +126,21 @@ public class ServicePersonne implements IService<Personne> {
 
     }
 
+    @Override
+    public ArrayList<Booking> lister() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Accomodation> lister_acc() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Accomodation getById(int id) {
+        return null;
+    }
+
 
     public void login(String email,String pass) throws IOException {
 

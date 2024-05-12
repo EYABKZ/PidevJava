@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.UpdateBooking">
+    <children>
+        <Button fx:id="retour" layoutX="48.0" layoutY="288.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
+        <Button layoutX="181.0" layoutY="248.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="77.0" text="Update" />
+        <Label layoutX="72.0" layoutY="187.0" text="Fin">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="58.0" layoutY="137.0" prefHeight="25.0" prefWidth="93.0" text="Debut">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="159.0" fitWidth="170.0" layoutX="329.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../../HyperNova-Gestion_Evenement%20(4)/HyperNova-Gestion_Evenement/src/main/resources/images/book.png" />
+            </image>
+        </ImageView>
+        <Label alignment="CENTER" layoutX="70.0" layoutY="21.0" prefHeight="36.0" prefWidth="363.0" text="UPDATE Your Reservation" textAlignment="CENTER" textFill="#4e3131" underline="true">
+            <font>
+                <Font name="Berlin Sans FB Bold" size="26.0" />
+            </font>
+        </Label>
+        <DatePicker fx:id="TFDB" layoutX="135.0" layoutY="137.0" />
+        <DatePicker fx:id="TFFB" layoutX="135.0" layoutY="187.0" />
+      <Label layoutX="174.0" layoutY="71.0" text="ID Booking a editer" />
+      <TextField fx:id="TFIDB" layoutX="184.0" layoutY="98.0" prefHeight="25.0" prefWidth="77.0" promptText="Tapez L'ID" />
+    </children>
+</AnchorPane>
